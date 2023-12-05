@@ -1,38 +1,104 @@
+@font-face {
+  font-family: "monofett";
+  src: url("./fonts/Monofett-Regular.ttf");
+}
+@font-face {
+  font-family: "metal";
+  src: url("./fonts/MetalMania-Regular.ttf");
+}
 .App {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  font-size: 6vw;
+  text-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  font-family: monofett;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.boxDiv {
+  /* display: block; */
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.checkNewButton {
+  background-color: lime;
+  border-color: rgb(164, 249, 188);
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 5px;
+  margin-top: 20px;
+  box-shadow: 0px 0px 0px 7px rgb(9, 172, 50);
+  font-family: Metal;
+  font-size: x-large;
+  outline: 1px solid black;
+  text-shadow: 1px 1px 1px rgb(102, 99, 99);
+  color: black;
+  font-weight: bold;
+}
+.checkNewButton:hover {
+  background-color: rgb(6, 232, 6);
+}
+.checkNewButton:active {
+  transform: translateY(2px);
+  background-color: rgb(35, 249, 60);
+  box-shadow: 0px -2px 0px 7px rgb(9, 172, 50);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.img1 {
+  border: solid cyan;
+  max-width: 40vw;
+  max-height: 40vw;
+  /* margin-left: 7vw; */
+
+  border-width: 10px 5px 10px 10px;
+  border-radius: 2% 0% 0% 2%;
+  box-shadow: 0 10px 40px -10px cyan;
+}
+.img2 {
+  border: solid lawngreen;
+  border-width: 10px 10px 10px 5px;
+  max-width: 40vw;
+  max-height: 40vw;
+  border-radius: 0% 2% 2% 0%;
+  box-shadow: 0 10px 40px -10px lawngreen;
+}
+
+.button {
+  background-color: rgba(0, 0, 0, 0);
+  border-width: 0px;
+  width: 8vw;
+  height: 8vw;
+
+  /* box-sizing: border-box; */
+}
+
+.button.selected {
+  background-color: rgba(255, 3, 3, 0.55);
+  border-color: lime;
+  border-width: 1px;
+}
+.grid-box1 {
+  margin-right: 5px;
+}
+.grid-box2 {
+  margin-left: 5px;
+}
+.grid-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button-row {
+  margin-bottom: -3px;
 }
