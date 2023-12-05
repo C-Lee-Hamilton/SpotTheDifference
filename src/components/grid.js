@@ -17,14 +17,14 @@ function Grid({ buttonStates, handleButtonClick }) {
         rowButtons.push(
           <button
             key={index}
-            className={`button ${isButtonSelected ? "selected" : ""}`}
+            className={`grid-tile ${isButtonSelected ? "selected" : ""}`}
             onClick={() => handleButtonClick(index)}
           ></button>
         );
       }
 
       buttons.push(
-        <div key={row} className="button-row">
+        <div key={row} className="grid-row">
           {rowButtons}
         </div>
       );

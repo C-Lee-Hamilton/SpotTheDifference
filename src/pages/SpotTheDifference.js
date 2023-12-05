@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Grid from "./grid";
+import Grid from "../components/grid";
 import samplePic1 from "../media/images/251.png";
 import samplePic2 from "../media/images/252.png";
 
-function PictureBox() {
+function SpotTheDiff() {
   const [buttonStates, setButtonStates] = useState(Array(25).fill(false));
 
   const handleButtonClick = (index) => {
@@ -13,8 +13,8 @@ function PictureBox() {
   };
 
   return (
-    <div className="pictureBoxContainer">
-      <div className="boxDiv">
+    <div>
+      <div className="pictureFrame">
         <img className="img1" src={samplePic1} alt="" />
         <img className="img2" src={samplePic2} alt="" />
         <div className="grid-container">
@@ -34,9 +34,9 @@ function PictureBox() {
         </div>
       </div>
 
-      <button className="checkNewButton">NEXT</button>
+      <button className="NextButton">NEXT</button>
     </div>
   );
 }
 
-export default PictureBox;
+export default SpotTheDiff;
