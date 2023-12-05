@@ -72,8 +72,8 @@
 .button {
   background-color: rgba(0, 0, 0, 0);
   border-width: 0px;
-  width: 8vw;
-  height: 8vw;
+  width: 4vw;
+  height: 4vw;
 
   /* box-sizing: border-box; */
 }

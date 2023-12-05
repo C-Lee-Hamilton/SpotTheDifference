@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Grid from "./grid";
-import samplePic1 from "../media/images/13.png";
-import samplePic2 from "../media/images/14.png";
+import samplePic1 from "../media/images/251.png";
+import samplePic2 from "../media/images/252.png";
 
 function PictureBox() {
   const [buttonStates, setButtonStates] = useState(Array(25).fill(false));

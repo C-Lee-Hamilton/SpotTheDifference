@@ -1,8 +1,8 @@
 import React from "react";
 
 function Grid({ buttonStates, handleButtonClick }) {
-  const numRows = 5;
-  const numColumns = 5;
+  const numRows = 10;
+  const numColumns = 10;
 
   const renderButtons = () => {
     const buttons = [];
