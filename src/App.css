@@ -6,6 +6,10 @@
   font-family: "metal";
   src: url("./fonts/MetalMania-Regular.ttf");
 }
+@font-face {
+  font-family: "Londrina";
+  src: url("./fonts/LondrinaOutline-Regular.ttf");
+}
 .App {
   text-align: center;
 }
@@ -25,29 +29,31 @@
 }
 
 .checkNewButton {
-  background-color: lime;
-  border-color: rgb(164, 249, 188);
-  height: 75px;
-  width: 75px;
-  border-radius: 50%;
+  background-color: rgba(0, 255, 255, 0);
+  border-color: cyan;
+  height: 50px;
+  width: 140px;
+  letter-spacing: 5px;
   border-style: solid;
-  border-width: 5px;
+  border-width: 2px;
   margin-top: 20px;
-  box-shadow: 0px 0px 0px 7px rgb(9, 172, 50);
-  font-family: Metal;
-  font-size: x-large;
-  outline: 1px solid black;
-  text-shadow: 1px 1px 1px rgb(102, 99, 99);
+  text-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
+  box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
+  font-family: Londrina;
+  font-size: xx-large;
+  border-radius: 16px;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
   color: black;
   font-weight: bold;
+  cursor: pointer;
 }
-.checkNewButton:hover {
-  background-color: rgb(6, 232, 6);
-}
+
 .checkNewButton:active {
-  transform: translateY(2px);
-  background-color: rgb(35, 249, 60);
-  box-shadow: 0px -2px 0px 7px rgb(9, 172, 50);
+  background: linear-gradient(cyan, lime, hotpink, orange, cyan);
+  color: black;
+  text-shadow: none;
+  transform: translateY(4px);
 }
 
 .img1 {

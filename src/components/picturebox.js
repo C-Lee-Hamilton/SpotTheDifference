@@ -34,7 +34,7 @@ function PictureBox() {
         </div>
       </div>
 
-      <button className="checkNewButton">Check</button>
+      <button className="checkNewButton">NEXT</button>
     </div>
   );
 }
