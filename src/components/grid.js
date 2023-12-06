@@ -18,7 +18,7 @@ function Grid({ buttonStates, handleButtonClick, winning }) {
           <button
             key={index}
             className={`grid-tile ${isButtonSelected ? "selected" : ""} ${
-              winning ? "spin win" : ""
+              winning ? "spin" : ""
             } `}
             onClick={() => handleButtonClick(index)}
           ></button>

@@ -203,13 +203,12 @@
     transform: rotateX(0deg) rotateY(0deg);
   }
   100% {
-    transform: rotateY(180deg);
+    transform: rotateZ(180deg);
   }
 }
-.grid-tile.win {
-  /* background-color: silver; */
+/* .grid-tile.win {
   background-image: linear-gradient(
-    to bottom right,
+    to bottom left,
     #aaa9ad,
     #b8b7ba,
     #c6c5c8,
@@ -223,8 +222,7 @@
     #aaa9ad
   );
   border: 0px solid cyan;
-  /* Your desired background color for winning state */
-}
+} */
 .spin {
   animation: spin 1s linear; /* Adjust duration and timing function as needed */
 }
