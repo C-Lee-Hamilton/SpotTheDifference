@@ -197,3 +197,34 @@
 .expert-grid-box1 {
   margin-right: 0px;
 }
+/* win spin */
+@keyframes spin {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+.grid-tile.win {
+  /* background-color: silver; */
+  background-image: linear-gradient(
+    to bottom right,
+    #aaa9ad,
+    #b8b7ba,
+    #c6c5c8,
+    #d4d3d5,
+    #e2e2e3,
+    #f0f0f1,
+    #e2e2e3,
+    #d4d3d5,
+    #c6c5c8,
+    #b8b7ba,
+    #aaa9ad
+  );
+  border: 0px solid cyan;
+  /* Your desired background color for winning state */
+}
+.spin {
+  animation: spin 1s linear; /* Adjust duration and timing function as needed */
+}

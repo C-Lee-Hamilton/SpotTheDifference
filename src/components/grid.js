@@ -1,6 +1,6 @@
 import React from "react";
 
-function Grid({ buttonStates, handleButtonClick }) {
+function Grid({ buttonStates, handleButtonClick, winning }) {
   const numRows = 10;
   const numColumns = 10;
 
@@ -17,7 +17,9 @@ function Grid({ buttonStates, handleButtonClick }) {
         rowButtons.push(
           <button
             key={index}
-            className={`grid-tile ${isButtonSelected ? "selected" : ""}`}
+            className={`grid-tile ${isButtonSelected ? "selected" : ""} ${
+              winning ? "spin win" : ""
+            } `}
             onClick={() => handleButtonClick(index)}
           ></button>
         );
@@ -33,7 +35,7 @@ function Grid({ buttonStates, handleButtonClick }) {
     return buttons;
   };
 
-  return <div className="">{renderButtons()}</div>;
+  return <div className="grid">{renderButtons()}</div>;
 }
 
 export default Grid;
