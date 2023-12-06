@@ -166,6 +166,15 @@
   border-radius: 2%;
   box-shadow: 0 10px 40px -10px orange;
 }
+.expert-img-blur {
+  border: solid darkorange;
+  max-width: 40vw;
+  max-height: 40vw;
+  border-width: 10px 10px 10px 10px;
+  border-radius: 2%;
+  box-shadow: 0 10px 40px -10px orange;
+  filter: blur(4px);
+}
 .checkButton {
   background-color: rgba(0, 255, 255, 0);
   border-color: cyan;
@@ -202,27 +211,14 @@
   0% {
     transform: rotateX(0deg) rotateY(0deg);
   }
+  50% {
+    scale: 120%;
+  }
   100% {
     transform: rotateZ(180deg);
   }
 }
-/* .grid-tile.win {
-  background-image: linear-gradient(
-    to bottom left,
-    #aaa9ad,
-    #b8b7ba,
-    #c6c5c8,
-    #d4d3d5,
-    #e2e2e3,
-    #f0f0f1,
-    #e2e2e3,
-    #d4d3d5,
-    #c6c5c8,
-    #b8b7ba,
-    #aaa9ad
-  );
-  border: 0px solid cyan;
-} */
+
 .spin {
   animation: spin 1s linear; /* Adjust duration and timing function as needed */
 }
