@@ -10,6 +10,7 @@ function ExpertMode() {
   const [clickedButtons, setClickedButtons] = useState([]);
   const [winning, setWinning] = useState(false);
   const [image, setImage] = useState(0);
+  const [gridVis, setGridVis] = useState(false);
 
   const imageSrc = Coordinates[image].src;
 
@@ -29,9 +30,9 @@ function ExpertMode() {
     setWinning(false);
     setButtonStates(Array(100).fill(false));
     setClickedButtons([]);
-    setImage(image + 1);
+    setImage((prevImage) => prevImage + 1);
     setTimeout(() => {
-      setImage(image + 1);
+      setImage((prevImage) => prevImage + 1);
     }, 5000);
   };
   const StartButton = () => {
@@ -55,24 +56,31 @@ function ExpertMode() {
       // Set the winning state to trigger the animation
       setWinning(true);
     }
-  }, [clickedButtons]);
+    if (image % 2 === 0) {
+      setGridVis(false);
+    } else {
+      setGridVis(true);
+    }
+  }, [clickedButtons, image]);
 
   return (
     <div>
       <div className="pictureFrame">
         {starting && <img className="expert-img-blur" src={imageSrc} alt="" />}
         {isPlaying && <img className="expert-img" src={imageSrc} alt="" />}
-
-        <div className="grid-container">
-          <div className="expert-grid-box1">
-            <Grid
-              buttonStates={buttonStates}
-              handleButtonClick={handleButtonClick}
-              winning={winning}
-            />
+        {gridVis && (
+          <div className="grid-container">
+            <div className="expert-grid-box1">
+              <Grid
+                buttonStates={buttonStates}
+                handleButtonClick={handleButtonClick}
+                winning={winning}
+              />
+            </div>
           </div>
-        </div>
+        )}
       </div>
+
       {starting && (
         <button className="checkButton" onClick={StartButton}>
           Start
