@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Grid from "../components/grid";
+import ExpertGrid from "../components/expertGrid";
 import samplePic1 from "../media/images/251.png";
 import samplePic2 from "../media/images/252.png";
 import Coordinates from "../components/coordinates";
@@ -11,6 +11,7 @@ function ExpertMode() {
   const [winning, setWinning] = useState(false);
   const [image, setImage] = useState(0);
   const [gridVis, setGridVis] = useState(false);
+  const [timer, setTimer] = useState(5);
 
   const imageSrc = Coordinates[image].src;
 
@@ -31,6 +32,7 @@ function ExpertMode() {
     setButtonStates(Array(100).fill(false));
     setClickedButtons([]);
     setImage((prevImage) => prevImage + 1);
+    setTimer(5);
     setTimeout(() => {
       setImage((prevImage) => prevImage + 1);
     }, 5000);
@@ -38,6 +40,7 @@ function ExpertMode() {
   const StartButton = () => {
     setStarting(false);
     setIsPlaying(true);
+    setTimer(5);
     setTimeout(() => {
       setImage(image + 1);
     }, 5000);
@@ -62,16 +65,29 @@ function ExpertMode() {
       setGridVis(true);
     }
   }, [clickedButtons, image]);
+  useEffect(() => {
+    if (isPlaying) {
+      const countdownInterval = setInterval(() => {
+        setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 0));
+      }, 1000);
+
+      return () => clearInterval(countdownInterval);
+    }
+  }, [isPlaying, timer]);
 
   return (
     <div>
-      <div className="pictureFrame">
+      <div className="expertPictureFrame">
+        <div className="timer-container">
+          <h1 className="timer-label">Timer</h1>
+          <h1 className="timer-timer">{timer}</h1>
+        </div>
         {starting && <img className="expert-img-blur" src={imageSrc} alt="" />}
         {isPlaying && <img className="expert-img" src={imageSrc} alt="" />}
         {gridVis && (
           <div className="grid-container">
             <div className="expert-grid-box1">
-              <Grid
+              <ExpertGrid
                 buttonStates={buttonStates}
                 handleButtonClick={handleButtonClick}
                 winning={winning}

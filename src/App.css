@@ -146,34 +146,44 @@
 .expertBanner {
   font-family: Metal;
   color: red;
-  margin-top: -3vh;
+  margin-top: -4.5%;
+  margin-left: 62vw;
   margin-bottom: 0vh;
   text-shadow: 2px 2px 2px black, 4px 4px rgba(255, 0, 0, 0.5), 6px 6px black,
     8px 8px rgba(255, 0, 0, 0.5);
   letter-spacing: 0.5vw;
   font-size: 6vw;
-  margin-top: -4.5%;
-  margin-left: 62vw;
+
   transform: rotate(-15deg);
   z-index: 3;
 }
 /* ExpertModeStyles */
+.expertPictureFrame {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .expert-img {
   border: solid darkorange;
-  max-width: 40vw;
-  max-height: 40vw;
+  max-width: 30vw;
+  max-height: 30vw;
   border-width: 10px 10px 10px 10px;
   border-radius: 2%;
   box-shadow: 0 10px 40px -10px orange;
+  margin-right: 0;
+  margin-top: -10px;
 }
 .expert-img-blur {
   border: solid darkorange;
-  max-width: 40vw;
-  max-height: 40vw;
+  max-width: 30vw;
+  max-height: 30vw;
   border-width: 10px 10px 10px 10px;
   border-radius: 2%;
   box-shadow: 0 10px 40px -10px orange;
   filter: blur(4px);
+  margin-right: 0;
+  margin-top: -10px;
 }
 .checkButton {
   background-color: rgba(0, 255, 255, 0);
@@ -204,7 +214,7 @@
 }
 
 .expert-grid-box1 {
-  margin-right: 0px;
+  margin-bottom: 10px;
 }
 /* win spin */
 @keyframes spin {
@@ -219,6 +229,58 @@
   }
 }
 
+.expert-grid-tile {
+  background-color: rgba(0, 0, 0, 0);
+  border-width: 0px;
+  width: 3vw;
+  height: 3vw;
+  margin: 0; /* Reset margin to zero */
+  padding: 0;
+}
+
+.expert-grid-tile.selected {
+  background-color: rgba(255, 3, 3, 0.55);
+  border-color: lime;
+  border-width: 1px;
+}
+
+.expert-grid-row {
+  margin: 0; /* Reset margin to zero */
+  padding: 0;
+  display: flex;
+}
+
 .spin {
-  animation: spin 1s linear; /* Adjust duration and timing function as needed */
+  animation: spin 1s linear;
+}
+
+/* Timer Styles */
+.timer-container {
+  max-width: 85vw;
+  max-height: 80vh;
+  position: absolute;
+  margin-right: 55vw;
+  border: 1px solid red;
+  color: red;
+  font-family: metal;
+  text-shadow: 2px 2px 2px black, 4px 4px rgba(255, 0, 0, 0.5);
+  box-shadow: 2px 2px 2px black, 4px 4px rgba(255, 0, 0, 0.5);
+  z-index: 3;
+  top: 0;
+  right: 15vw;
+}
+.timer-label {
+  font-size: 2vw;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: 1px solid red;
+  letter-spacing: 0.5vw;
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+.timer-timer {
+  margin-bottom: 1vh;
+  margin-top: 0px;
+  padding-top: 1vh;
+  font-size: 5vw;
 }
