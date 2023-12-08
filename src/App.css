@@ -14,7 +14,14 @@
 .header {
   font-size: 6vw;
   text-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
-  margin-top: 5vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  font-family: monofett;
+}
+.footer {
+  font-size: 4vw;
+  text-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
+  margin-top: 1vh;
   margin-bottom: 1vh;
   font-family: monofett;
 }
@@ -55,8 +62,8 @@
 
 .img1 {
   border: solid cyan;
-  max-width: 40vw;
-  max-height: 40vw;
+  max-width: 35vw;
+  max-height: 35vw;
   border-width: 10px 5px 10px 10px;
   border-radius: 2% 0% 0% 2%;
   box-shadow: 0 10px 40px -10px cyan;
@@ -64,8 +71,8 @@
 .img2 {
   border: solid lawngreen;
   border-width: 10px 10px 10px 5px;
-  max-width: 40vw;
-  max-height: 40vw;
+  max-width: 35vw;
+  max-height: 35vw;
   border-radius: 0% 2% 2% 0%;
   box-shadow: 0 10px 40px -10px lawngreen;
 }
@@ -73,8 +80,8 @@
 .grid-tile {
   background-color: rgba(0, 0, 0, 0);
   border-width: 0px;
-  width: 4vw;
-  height: 4vw;
+  width: 3.5vw;
+  height: 3.5vw;
 }
 
 .grid-tile.selected {
@@ -142,6 +149,7 @@
   width: 14vw;
   font-size: large;
   font-weight: bold;
+  z-index: 3;
 }
 .expertBanner {
   font-family: Metal;
@@ -252,6 +260,19 @@
 
 .spin {
   animation: spin 1s linear;
+}
+
+.exp-instructions {
+  z-index: 3; /* Set a higher z-index to make it appear on top */
+  position: absolute; /* Position it absolutely within the expertPictureFrame */
+  top: 50%; /* Adjust top position as needed */
+  left: 50%; /* Adjust left position as needed */
+  transform: translate(-50%, -50%); /* Center it horizontally and vertically */
+  text-align: center; /* Center text */
+  color: black; /* Adjust text color as needed */
+  font-size: 3vw; /* Adjust font size as needed */
+  font-family: "metal";
+  text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
 }
 
 /* Timer Styles */

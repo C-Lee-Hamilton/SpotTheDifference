@@ -7,6 +7,7 @@ function App() {
   const [modeText, setModeText] = useState("Expert");
   const [toggleMode, setToggleMode] = useState(true);
   const [toggleExp, setToggleExp] = useState(!toggleMode);
+  const [click, setClick] = useState(true);
   const switchMode = () => {
     modeText === "Expert" ? setModeText("Normal") : setModeText("Expert");
     mode === "expertButton"
@@ -15,6 +16,7 @@ function App() {
     setToggleMode(!toggleMode);
     setToggleExp(!toggleExp);
   };
+
   return (
     <div className="App">
       <div>

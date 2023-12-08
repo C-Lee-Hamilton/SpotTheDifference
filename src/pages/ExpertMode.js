@@ -11,7 +11,7 @@ function ExpertMode() {
   const [winning, setWinning] = useState(false);
   const [image, setImage] = useState(0);
   const [gridVis, setGridVis] = useState(false);
-  const [timer, setTimer] = useState(5);
+  const [timer, setTimer] = useState(15);
 
   const imageSrc = Coordinates[image].src;
 
@@ -32,7 +32,7 @@ function ExpertMode() {
     setButtonStates(Array(100).fill(false));
     setClickedButtons([]);
     setImage((prevImage) => prevImage + 1);
-    setTimer(5);
+    setTimer(15);
     setTimeout(() => {
       setImage((prevImage) => prevImage + 1);
     }, 5000);
@@ -40,10 +40,10 @@ function ExpertMode() {
   const StartButton = () => {
     setStarting(false);
     setIsPlaying(true);
-    setTimer(5);
+    setTimer(15);
     setTimeout(() => {
       setImage(image + 1);
-    }, 5000);
+    }, 15000);
   };
 
   useEffect(() => {
@@ -82,6 +82,14 @@ function ExpertMode() {
           <h1 className="timer-label">Timer</h1>
           <h1 className="timer-timer">{timer}</h1>
         </div>
+        {starting && (
+          <div className="exp-instructions">
+            <h4>Objectives:</h4>
+            <h5>Memorize the first image before time runs out</h5>
+            <h5>Find the differences in the second image</h5>
+            <h3>Click Start to Begin</h3>
+          </div>
+        )}
         {starting && <img className="expert-img-blur" src={imageSrc} alt="" />}
         {isPlaying && <img className="expert-img" src={imageSrc} alt="" />}
         {gridVis && (

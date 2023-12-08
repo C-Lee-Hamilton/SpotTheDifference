@@ -79,6 +79,7 @@ function SpotTheDiff() {
           NEXT
         </button>
       )}
+      {!winning && <h1 className="footer">Click Anywhere to begin</h1>}
     </div>
   );
 }
