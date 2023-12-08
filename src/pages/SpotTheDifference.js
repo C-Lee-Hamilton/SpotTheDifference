@@ -10,7 +10,7 @@ function SpotTheDiff() {
   const [winning, setWinning] = useState(false);
   const [leftImg, setLeftImg] = useState(0);
   const [rightImg, setRightImg] = useState(1);
-
+  const [click, setClick] = useState(true);
   const imageSrc1 = Coordinates[leftImg].src;
   const imageSrc2 = Coordinates[rightImg].src;
 
@@ -27,7 +27,9 @@ function SpotTheDiff() {
       }
     });
   };
-
+  const clicker = () => {
+    setClick(false);
+  };
   const NextButton = () => {
     setWinning(false);
     setButtonStates(Array(100).fill(false));
@@ -52,7 +54,7 @@ function SpotTheDiff() {
   }, [clickedButtons]);
 
   return (
-    <div>
+    <div onClick={clicker}>
       <div className="pictureFrame">
         <img className="img1" src={imageSrc1} alt="" />
         <img className="img2" src={imageSrc2} alt="" />
@@ -79,7 +81,7 @@ function SpotTheDiff() {
           NEXT
         </button>
       )}
-      {!winning && <h1 className="footer">Click Anywhere to begin</h1>}
+      {click && <h1 className="footer">Click Anywhere to begin</h1>}
     </div>
   );
 }

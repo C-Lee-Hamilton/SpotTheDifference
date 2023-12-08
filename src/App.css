@@ -26,6 +26,25 @@
   font-family: monofett;
 }
 
+.login-button {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0);
+  color: cyan;
+  cursor: pointer;
+  font-family: metal;
+
+  font-size: 2vh;
+  letter-spacing: 1px;
+}
+.login-button:hover {
+  color: black;
+  text-shadow: none;
+  text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
+}
 .pictureFrame {
   position: relative;
   display: flex;
@@ -113,13 +132,14 @@
 .expertMode {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
+
   margin: 0px;
 }
 .expertButton {
   position: absolute;
   top: 0;
-  right: 1px;
+  left: 1px;
   margin: 0;
   background-color: rgba(0, 0, 0, 0);
   color: red;
@@ -127,19 +147,19 @@
   font-family: metal;
   box-shadow: 2px 2px rgba(255, 0, 0, 0.5);
   width: 14vw;
-  font-size: large;
+  font-size: 2vh;
   letter-spacing: 1px;
 }
 .normalMode {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   margin: 0px;
 }
 .normalModeButton {
   position: absolute;
   top: 0;
-  right: 1px;
+  left: 1px;
   margin: 0;
   background-color: rgba(0, 0, 0, 0);
   color: blue;
@@ -147,7 +167,7 @@
   font-family: Copperplate;
   box-shadow: 2px 2px rgba(0, 68, 255, 0.5);
   width: 14vw;
-  font-size: large;
+  font-size: 2vh;
   font-weight: bold;
   z-index: 3;
 }
@@ -304,4 +324,50 @@
   margin-top: 0px;
   padding-top: 1vh;
   font-size: 5vw;
+}
+.login-popup {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  background-color: grey;
+  border: 5px solid rgb(78, 78, 78);
+  width: 180px;
+  height: 220px;
+  padding: 10px;
+  z-index: 5;
+  border-radius: 5px;
+  text-align: right;
+}
+
+.login-inputs {
+  margin-bottom: 0px;
+  width: 170px;
+  color: gray;
+  border: 5px solid gray;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+.login-anchor {
+  margin-top: -15px;
+  margin-bottom: 0px;
+  transform: translateX(30px);
+  width: 120px;
+  font-size: 1px;
+  cursor: pointer;
+}
+.login-anchor:hover {
+  color: blue;
+}
+.login-popup-button {
+  margin-top: 0;
+  width: 180px;
+  border: 5px solid lightgray;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  cursor: pointer;
 }
