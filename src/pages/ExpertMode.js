@@ -98,7 +98,7 @@ function ExpertMode() {
         )}
       </div>
 
-      <h1 className="timer-label">Time Remaining: {timer}</h1>
+      <div className="timer-label">Time Remaining: {timer}</div>
 
       {starting && (
         <button className="exp-next-button" onClick={StartButton}>
