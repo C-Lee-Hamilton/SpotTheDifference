@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ExpertGrid from "../components/expertGrid";
-import samplePic1 from "../media/images/251.png";
-import samplePic2 from "../media/images/252.png";
+import "../styles/expertMode.css";
+
 import Coordinates from "../components/coordinates";
 function ExpertMode() {
   const [starting, setStarting] = useState(true);
@@ -47,16 +47,13 @@ function ExpertMode() {
   };
 
   useEffect(() => {
-    // Check for a specific winning combination (e.g., buttons 1, 2, and 3)
+    //Check For Win
     const winningCombination = Coordinates[image].solution;
 
     if (
       clickedButtons.length === winningCombination.length &&
       clickedButtons.every((btnIndex) => winningCombination.includes(btnIndex))
     ) {
-      console.log("You win!");
-
-      // Set the winning state to trigger the animation
       setWinning(true);
     }
     if (image % 2 === 0) {
@@ -77,7 +74,7 @@ function ExpertMode() {
 
   return (
     <div>
-      <div className="expertPictureFrame">
+      <div className="exp-picture-frame">
         <div className="timer-container">
           <h1 className="timer-label">Timer</h1>
           <h1 className="timer-timer">{timer}</h1>
@@ -90,11 +87,11 @@ function ExpertMode() {
             <h3>Click Start to Begin</h3>
           </div>
         )}
-        {starting && <img className="expert-img-blur" src={imageSrc} alt="" />}
-        {isPlaying && <img className="expert-img" src={imageSrc} alt="" />}
+        {starting && <img className="exp-img-blur" src={imageSrc} alt="" />}
+        {isPlaying && <img className="exp-img" src={imageSrc} alt="" />}
         {gridVis && (
-          <div className="grid-container">
-            <div className="expert-grid-box1">
+          <div className="exp-grid-container">
+            <div className="exp-grid-box1">
               <ExpertGrid
                 buttonStates={buttonStates}
                 handleButtonClick={handleButtonClick}
@@ -106,12 +103,12 @@ function ExpertMode() {
       </div>
 
       {starting && (
-        <button className="checkButton" onClick={StartButton}>
+        <button className="exp-next-button" onClick={StartButton}>
           Start
         </button>
       )}
       {winning && (
-        <button className="checkButton" onClick={NextButton}>
+        <button className="exp-next-button" onClick={NextButton}>
           Next
         </button>
       )}

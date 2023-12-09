@@ -10,168 +10,55 @@
 .App {
   text-align: center;
 }
-/* Spot The Difference Normal Mode Styles */
+
 .header {
   font-size: 6vw;
   text-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
+  margin-top: 5vh;
+  /* margin-bottom: 1vh; */
   font-family: monofett;
-}
-.footer {
-  font-size: 4vw;
-  text-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-  font-family: monofett;
+  cursor: default;
 }
 
-.login-button {
+/* modes */
+.back-button-h1 {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
+  top: 0;
+  left: 0;
+  margin: 0px;
+}
+.main-menu {
+  cursor: default;
+  text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
+}
+.mode-button {
   background-color: rgba(0, 0, 0, 0);
-  color: cyan;
-  cursor: pointer;
-  font-family: metal;
-
-  font-size: 2vh;
-  letter-spacing: 1px;
-}
-.login-button:hover {
-  color: black;
-  text-shadow: none;
-  text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
-}
-.pictureFrame {
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-.NextButton {
-  background-color: rgba(0, 255, 255, 0);
-  border-color: cyan;
-  height: 50px;
-  width: 140px;
-  letter-spacing: 5px;
-  border-style: solid;
-  border-width: 2px;
-  margin-top: 20px;
-  text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
+  border-radius: 10px;
   box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
   font-family: metal;
-  font-size: xx-large;
-  border-radius: 16px;
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  color: black;
-  font-weight: bold;
+  width: 42vw;
+  height: 12vw;
+  text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
+  padding: 0;
+  cursor: pointer;
+  font-size: 8vw;
+  margin-bottom: 15px;
+}
+.back-button {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  box-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
+  font-family: metal;
+  width: 12vw;
+  max-width: 40px;
+  padding: 0;
   cursor: pointer;
 }
 
-.NextButton:active {
-  background: linear-gradient(cyan, lime, hotpink, orange, cyan);
-  color: black;
-  text-shadow: none;
-  transform: translateY(4px);
-}
-
-.img1 {
-  border: solid cyan;
-  max-width: 35vw;
-  max-height: 35vw;
-  border-width: 10px 5px 10px 10px;
-  border-radius: 2% 0% 0% 2%;
-  box-shadow: 0 10px 40px -10px cyan;
-}
-.img2 {
-  border: solid lawngreen;
-  border-width: 10px 10px 10px 5px;
-  max-width: 35vw;
-  max-height: 35vw;
-  border-radius: 0% 2% 2% 0%;
-  box-shadow: 0 10px 40px -10px lawngreen;
-}
-
-.grid-tile {
-  background-color: rgba(0, 0, 0, 0);
-  border-width: 0px;
-  width: 3.5vw;
-  height: 3.5vw;
-}
-
-.grid-tile.selected {
-  background-color: rgba(255, 3, 3, 0.55);
-  border-color: lime;
-  border-width: 1px;
-}
-.grid-box1 {
-  margin-right: 5px;
-}
-.grid-box2 {
-  margin-left: 5px;
-}
-.grid-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.grid-row {
-  margin-bottom: -3px;
-}
-
-/* Modes Header and Button */
-.expertMode {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  margin: 0px;
-}
-.expertButton {
-  position: absolute;
-  top: 0;
-  left: 1px;
-  margin: 0;
-  background-color: rgba(0, 0, 0, 0);
-  color: red;
-  border: 1px solid red;
-  font-family: metal;
-  box-shadow: 2px 2px rgba(255, 0, 0, 0.5);
-  width: 14vw;
-  font-size: 2vh;
-  letter-spacing: 1px;
-}
-.normalMode {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0px;
-}
-.normalModeButton {
-  position: absolute;
-  top: 0;
-  left: 1px;
-  margin: 0;
-  background-color: rgba(0, 0, 0, 0);
-  color: blue;
-  border: 1px solid blue;
-  font-family: Copperplate;
-  box-shadow: 2px 2px rgba(0, 68, 255, 0.5);
-  width: 14vw;
-  font-size: 2vh;
-  font-weight: bold;
-  z-index: 3;
-}
-.expertBanner {
+.expert-banner {
   font-family: Metal;
   color: red;
   margin-top: -4.5%;
@@ -181,149 +68,26 @@
     8px 8px rgba(255, 0, 0, 0.5);
   letter-spacing: 0.5vw;
   font-size: 6vw;
-
+  cursor: default;
   transform: rotate(-15deg);
   z-index: 3;
 }
-/* ExpertModeStyles */
-.expertPictureFrame {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.expert-img {
-  border: solid darkorange;
-  max-width: 30vw;
-  max-height: 30vw;
-  border-width: 10px 10px 10px 10px;
-  border-radius: 2%;
-  box-shadow: 0 10px 40px -10px orange;
-  margin-right: 0;
-  margin-top: -10px;
-}
-.expert-img-blur {
-  border: solid darkorange;
-  max-width: 30vw;
-  max-height: 30vw;
-  border-width: 10px 10px 10px 10px;
-  border-radius: 2%;
-  box-shadow: 0 10px 40px -10px orange;
-  filter: blur(4px);
-  margin-right: 0;
-  margin-top: -10px;
-}
-.checkButton {
-  background-color: rgba(0, 255, 255, 0);
-  border-color: cyan;
-  height: 50px;
-  width: 140px;
-  letter-spacing: 5px;
-  border-style: solid;
-  border-width: 2px;
-  margin-top: 20px;
-  text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
-  box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
-  font-family: metal;
-  font-size: xx-large;
-  border-radius: 16px;
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
-}
 
-.checkButton:active {
-  background: linear-gradient(cyan, lime, hotpink, orange, cyan);
-  color: black;
-  text-shadow: none;
-  transform: translateY(4px);
-}
-
-.expert-grid-box1 {
-  margin-bottom: 10px;
-}
-/* win spin */
-@keyframes spin {
-  0% {
-    transform: rotateX(0deg) rotateY(0deg);
-  }
-  50% {
-    scale: 120%;
-  }
-  100% {
-    transform: rotateZ(180deg);
-  }
-}
-
-.expert-grid-tile {
+/* Login */
+.login-button {
   background-color: rgba(0, 0, 0, 0);
-  border-width: 0px;
-  width: 3vw;
-  height: 3vw;
-  margin: 0; /* Reset margin to zero */
-  padding: 0;
-}
-
-.expert-grid-tile.selected {
-  background-color: rgba(255, 3, 3, 0.55);
-  border-color: lime;
-  border-width: 1px;
-}
-
-.expert-grid-row {
-  margin: 0; /* Reset margin to zero */
-  padding: 0;
-  display: flex;
-}
-
-.spin {
-  animation: spin 1s linear;
-}
-
-.exp-instructions {
-  z-index: 3; /* Set a higher z-index to make it appear on top */
-  position: absolute; /* Position it absolutely within the expertPictureFrame */
-  top: 50%; /* Adjust top position as needed */
-  left: 50%; /* Adjust left position as needed */
-  transform: translate(-50%, -50%); /* Center it horizontally and vertically */
-  text-align: center; /* Center text */
-  color: black; /* Adjust text color as needed */
-  font-size: 3vw; /* Adjust font size as needed */
-  font-family: "metal";
-  text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
-}
-
-/* Timer Styles */
-.timer-container {
-  max-width: 85vw;
-  max-height: 80vh;
-  position: absolute;
-  margin-right: 55vw;
-  border: 1px solid red;
-  color: red;
+  color: cyan;
+  cursor: pointer;
   font-family: metal;
-  text-shadow: 2px 2px 2px black, 4px 4px rgba(255, 0, 0, 0.5);
-  box-shadow: 2px 2px 2px black, 4px 4px rgba(255, 0, 0, 0.5);
-  z-index: 3;
-  top: 0;
-  right: 15vw;
+  border: none;
+  font-size: 2vh;
+  letter-spacing: 1px;
+  margin-top: 20px;
 }
-.timer-label {
-  font-size: 2vw;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  border: 1px solid red;
-  letter-spacing: 0.5vw;
-  padding-left: 1vw;
-  padding-right: 1vw;
-}
-.timer-timer {
-  margin-bottom: 1vh;
-  margin-top: 0px;
-  padding-top: 1vh;
-  font-size: 5vw;
+.login-button:hover {
+  color: black;
+
+  text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
 }
 .login-popup {
   position: fixed;
@@ -344,7 +108,6 @@
   border-radius: 5px;
   text-align: right;
 }
-
 .login-inputs {
   margin-bottom: 0px;
   width: 170px;
@@ -352,15 +115,19 @@
   border: 5px solid gray;
   box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 }
-.login-anchor {
-  margin-top: -15px;
+.login-forgot {
+  margin-top: -10px;
   margin-bottom: 0px;
+  padding-right: 0px;
+
   transform: translateX(30px);
   width: 120px;
-  font-size: 1px;
+  font-size: 12px;
   cursor: pointer;
+  border: none;
+  background-color: grey;
 }
-.login-anchor:hover {
+.login-forgot:hover {
   color: blue;
 }
 .login-popup-button {
@@ -370,4 +137,26 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 1);
   cursor: pointer;
+}
+
+/* win spin */
+@keyframes spin {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    scale: 120%;
+  }
+  100% {
+    transform: rotateZ(180deg);
+  }
+}
+.spin {
+  animation: spin 1s linear;
+}
+
+@media only screen and (max-width: 700px) {
+  .header {
+    font-size: 8vw;
+  }
 }

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Grid from "../components/grid";
-import samplePic1 from "../media/images/251.png";
-import samplePic2 from "../media/images/252.png";
 import Coordinates from "../components/coordinates";
-console.log(Coordinates[0].src);
+import "../styles/normalMode.css";
 function SpotTheDiff() {
   const [buttonStates, setButtonStates] = useState(Array(100).fill(false));
   const [clickedButtons, setClickedButtons] = useState([]);
@@ -39,23 +37,19 @@ function SpotTheDiff() {
   };
 
   useEffect(() => {
-    // Check for a specific winning combination (e.g., buttons 1, 2, and 3)
     const winningCombination = Coordinates[leftImg].solution;
 
     if (
       clickedButtons.length === winningCombination.length &&
       clickedButtons.every((btnIndex) => winningCombination.includes(btnIndex))
     ) {
-      console.log("You win!");
-
-      // Set the winning state to trigger the animation
       setWinning(true);
     }
   }, [clickedButtons]);
 
   return (
     <div onClick={clicker}>
-      <div className="pictureFrame">
+      <div className="picture-frame">
         <img className="img1" src={imageSrc1} alt="" />
         <img className="img2" src={imageSrc2} alt="" />
         <div className="grid-container">
@@ -66,7 +60,6 @@ function SpotTheDiff() {
               winning={winning}
             />
           </div>
-          {/* Second set of buttons */}
           <div className="grid-box2">
             <Grid
               buttonStates={buttonStates}
@@ -77,7 +70,7 @@ function SpotTheDiff() {
         </div>
       </div>
       {winning && (
-        <button onClick={NextButton} className="NextButton">
+        <button onClick={NextButton} className="next-button">
           NEXT
         </button>
       )}

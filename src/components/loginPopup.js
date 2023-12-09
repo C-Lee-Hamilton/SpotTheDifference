@@ -7,7 +7,7 @@ function PopUp({ loginClickPopup }) {
         placeholder="password"
         className="login-inputs"
       ></input>
-      <a className="login-anchor">Forgot Password?</a>
+      <button className="login-forgot">Forgot Password?</button>
       <button onClick={loginClickPopup} className="login-popup-button">
         Login
       </button>

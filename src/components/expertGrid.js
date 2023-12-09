@@ -1,5 +1,6 @@
 import React from "react";
-
+import "../styles/expertMode.css";
+import "../styles/normalMode.css";
 function ExpertGrid({ buttonStates, handleButtonClick, winning }) {
   const numRows = 10;
   const numColumns = 10;
@@ -17,16 +18,16 @@ function ExpertGrid({ buttonStates, handleButtonClick, winning }) {
         rowButtons.push(
           <button
             key={index}
-            className={`expert-grid-tile ${
-              isButtonSelected ? "selected" : ""
-            } ${winning ? "spin" : ""} `}
+            className={`exp-grid-tile ${isButtonSelected ? "selected" : ""} ${
+              winning ? "spin" : ""
+            } `}
             onClick={() => handleButtonClick(index)}
           ></button>
         );
       }
 
       buttons.push(
-        <div key={row} className="expert-grid-row">
+        <div key={row} className="exp-grid-row">
           {rowButtons}
         </div>
       );
