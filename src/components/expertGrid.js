@@ -36,7 +36,7 @@ function ExpertGrid({ buttonStates, handleButtonClick, winning }) {
     return buttons;
   };
 
-  return <div className="grid">{renderButtons()}</div>;
+  return <div className="">{renderButtons()}</div>;
 }
 
 export default ExpertGrid;

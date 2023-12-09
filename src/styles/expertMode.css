@@ -12,7 +12,7 @@
   border-radius: 2%;
   box-shadow: 0 10px 40px -10px orange;
   margin-right: 0;
-  margin-top: -10px;
+  margin-top: -0px;
 }
 .exp-img-blur {
   border: solid darkorange;
@@ -33,7 +33,7 @@
   letter-spacing: 5px;
   border-style: solid;
   border-width: 2px;
-  margin-top: 20px;
+  margin-top: 30px;
   text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
   box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
   font-family: metal;
@@ -64,7 +64,7 @@
 }
 
 .exp-grid-box1 {
-  margin-bottom: 10px;
+  margin-bottom: 3.5vh;
 }
 
 .exp-grid-tile {
@@ -133,4 +133,88 @@
   margin-top: 0px;
   padding-top: 1vh;
   font-size: 5vw;
+}
+/* Media query for smartphones */
+@media only screen and (max-width: 600px) {
+  .exp-grid-container {
+    margin-top: 4vh;
+    margin-bottom: 5px;
+  }
+  .exp-grid-box1 {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  .exp-grid-tile {
+    min-width: 3.5vh;
+    min-height: 3.5vh;
+  }
+  .exp-picture-frame {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-end;
+  }
+  .exp-img {
+    border-width: 10px 10px 5px 10px;
+    border-radius: 2% 2% 0% 0%;
+    max-width: 35vh;
+    max-height: 35vh;
+    margin-top: 4vh;
+  }
+  .exp-img-blur {
+    border-width: 10px 10px 5px 10px;
+    border-radius: 2% 2% 0% 0%;
+    max-width: 35vh;
+    max-height: 35vh;
+    margin-top: 4vh;
+  }
+
+  /* .exp-grid-row {
+    margin-bottom: 0vh;
+  } */
+  .timer-container {
+    width: 100px;
+    height: 120px;
+
+    top: 70%;
+
+    position: fixed;
+    margin-right: 22%;
+    border: 1px solid red;
+    color: red;
+    font-family: metal;
+    text-shadow: 2px 2px 2px black, 4px 4px rgba(255, 0, 0, 0.5);
+    box-shadow: 2px 2px 2px black, 4px 4px rgba(255, 0, 0, 0.5);
+    z-index: 3;
+
+    cursor: default;
+  }
+  .timer-label {
+    font-size: 8vw;
+
+    border: 1px solid red;
+    letter-spacing: 0.5vw;
+  }
+  .timer-timer {
+    margin-bottom: 2vh;
+    margin-top: 0px;
+    font-size: 10vw;
+  }
+  .exp-instructions {
+    margin-top: 20px;
+    font-size: 2.5vh;
+  }
+}
+@media only screen and (min-width: 700px) {
+  .exp-grid-container {
+    margin-top: 4vh;
+    margin-bottom: 5px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .exp-grid-container {
+    margin-top: 4vh;
+    margin-bottom: 5px;
+  }
 }
