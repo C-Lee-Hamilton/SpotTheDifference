@@ -75,10 +75,6 @@ function ExpertMode() {
   return (
     <div>
       <div className="exp-picture-frame">
-        <div className="timer-container">
-          <h1 className="timer-label">Timer</h1>
-          <h1 className="timer-timer">{timer}</h1>
-        </div>
         {starting && (
           <div className="exp-instructions">
             <h4>Objectives:</h4>
@@ -101,6 +97,8 @@ function ExpertMode() {
           </div>
         )}
       </div>
+
+      <h1 className="timer-label">Time Remaining: {timer}</h1>
 
       {starting && (
         <button className="exp-next-button" onClick={StartButton}>

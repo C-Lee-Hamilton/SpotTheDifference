@@ -15,7 +15,6 @@
   font-size: 6vw;
   text-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
   margin-top: 5vh;
-  /* margin-bottom: 1vh; */
   font-family: monofett;
   cursor: default;
 }
@@ -46,7 +45,7 @@
 }
 .back-button {
   position: absolute;
-  top: 1px;
+  top: 5px;
   left: 1px;
   background-color: rgba(0, 0, 0, 0);
   border-radius: 10px;
@@ -61,7 +60,7 @@
 .expert-banner {
   font-family: Metal;
   color: red;
-  margin-top: -4.5%;
+  margin-top: -6.5%;
   margin-left: 62vw;
   margin-bottom: 0vh;
   text-shadow: 2px 2px 2px black, 4px 4px rgba(255, 0, 0, 0.5), 6px 6px black,
@@ -158,5 +157,22 @@
 @media only screen and (max-width: 700px) {
   .header {
     font-size: 8vw;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .expert-banner {
+    font-family: Metal;
+    color: red;
+    margin-top: -20px;
+    margin-left: 0vw;
+    margin-bottom: -2vh;
+    text-shadow: 2px 2px 2px black, 4px 4px rgba(255, 0, 0, 0.5), 6px 6px black,
+      8px 8px rgba(255, 0, 0, 0.5);
+    letter-spacing: 3vw;
+    font-size: 10vw;
+    cursor: default;
+    transform: rotate(0deg);
+    z-index: 3;
   }
 }
