@@ -1,20 +1,77 @@
-function PopUp({ loginClickPopup }) {
+import React, { useState } from "react";
+import axios from "axios";
+import CreateAccount from "./CreateAccount";
+function PopUp({ loginClickPopup, setGreeting }) {
+  const [register, setRegister] = useState(false);
+  const [login, setLogin] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [registerSuccess, setRegisterSuccess] = useState("");
+
+  const registerSetVis = () => {
+    setRegister(!register);
+    setLogin(!login);
+    setRegisterSuccess("");
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/Auth/login", {
+        username: email,
+        password: password,
+      });
+
+      if (response.data.success) {
+        console.log("Login successful");
+        console.log(response.data.user.username);
+        setGreeting("Welcome Back" + " " + response.data.user.username);
+        loginClickPopup();
+      } else {
+        console.log("Login failed:", response.data.message);
+        // Handle login failure
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
+  };
+
   return (
     <div className="login-popup">
-      <input type="text" placeholder="email" className="login-inputs"></input>
-      <input
-        type="password"
-        placeholder="password"
-        className="login-inputs"
-      ></input>
-      <button className="login-forgot">Forgot Password?</button>
-      <button onClick={loginClickPopup} className="login-popup-button">
-        Login
-      </button>
-      <button className="login-popup-button">Create Account</button>
-      <button onClick={loginClickPopup} className="login-popup-button">
-        Cancel
-      </button>
+      {login && (
+        <div>
+          <input
+            type="text"
+            placeholder="email"
+            className="login-inputs"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            className="login-inputs"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className="login-forgot">Forgot Password?</button>
+          <button onClick={handleLogin} className="login-popup-button">
+            Login
+          </button>
+          <button onClick={registerSetVis} className="login-popup-button">
+            Create Account
+          </button>
+          <button onClick={loginClickPopup} className="login-popup-button">
+            Cancel
+          </button>
+        </div>
+      )}
+      {register && (
+        <CreateAccount
+          registerSetVis={registerSetVis}
+          setRegisterSuccess={setRegisterSuccess}
+          registerSuccess={registerSuccess}
+        />
+      )}
     </div>
   );
 }
