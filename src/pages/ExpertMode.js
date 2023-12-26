@@ -65,6 +65,24 @@ function ExpertMode({ soundVolume }) {
     }
   }, [clickedButtons, image, winAudio]);
 
+  useEffect(() => {
+    if (timer === 15 && starting === false) {
+      const countdownInterval = setInterval(() => {
+        setTimer((prevTimer) => {
+          if (prevTimer === 0) {
+            clearInterval(countdownInterval);
+          }
+          return Math.max(prevTimer - 1, 0);
+        });
+      }, 1000);
+
+      setTimeout(() => {
+        clearInterval(countdownInterval);
+        setTimer(0);
+      }, 15000);
+    }
+  }, [timer, starting]);
+
   return (
     <div>
       <div className="exp-picture-frame">

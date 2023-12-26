@@ -36,24 +36,6 @@ function App() {
     clickMode.play();
     clickMode.volume = soundVolume;
   };
-  const selectMute = () => {
-    if (muteButton === Unmute) {
-      setSoundVolume("0");
-      setMusicVolume("0");
-      setMuteButton(Mute);
-      setNormAudioPlaying(false);
-      setExpAudioPlaying(false);
-    } else {
-      setMuteButton(Unmute);
-      setSoundVolume(".5");
-      setMusicVolume(".5");
-      if (toggleNormal === true) {
-        setNormAudioPlaying(true);
-      } else if (toggleExp === true) {
-        setExpAudioPlaying(true);
-      }
-    }
-  };
 
   const handleLogout = async () => {
     try {
@@ -94,6 +76,24 @@ function App() {
     setToggleMenu(true);
     setNormAudioPlaying(false);
     setExpAudioPlaying(false);
+  };
+  const selectMute = () => {
+    if (soundVolume !== "0" && musicVolume !== 0) {
+      setSoundVolume("0");
+      setMusicVolume("0");
+      setMuteButton(Mute);
+      setNormAudioPlaying(false);
+      setExpAudioPlaying(false);
+    } else {
+      setMuteButton(Unmute);
+      setSoundVolume(".5");
+      setMusicVolume(".5");
+      if (toggleNormal) {
+        setNormAudioPlaying(true);
+      } else if (toggleExp) {
+        setExpAudioPlaying(true);
+      }
+    }
   };
 
   useEffect(() => {
