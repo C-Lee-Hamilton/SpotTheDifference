@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/settingsMode.css";
 import ColorSelector from "../components/colorSelector";
-import Mute from "../media/images/icons/mute.png";
-import Unmute from "../media/images/icons/unmute.png";
+
 function SettingsMode({
   setBackgroundColor,
   setSoundVolume,
@@ -27,6 +26,7 @@ function SettingsMode({
     setRangeValue2(newValue);
     setMusicVolume(newValue);
   };
+
   return (
     <div className="settingsBody">
       {!credits && (

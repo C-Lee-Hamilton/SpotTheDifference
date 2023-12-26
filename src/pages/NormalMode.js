@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Grid from "../components/grid";
 import Coordinates from "../components/coordinates";
 import "../styles/normalMode.css";
 import WinSound from "../media/sounds/win.mp3";
-function SpotTheDiff({ soundVolume }) {
+import NormMusic from "../media/sounds/NormalMusic.mp3";
+function SpotTheDiff({ soundVolume, musicVolume }) {
   const [buttonStates, setButtonStates] = useState(Array(100).fill(false));
   const [clickedButtons, setClickedButtons] = useState([]);
   const [winning, setWinning] = useState(false);
@@ -13,6 +14,7 @@ function SpotTheDiff({ soundVolume }) {
   const imageSrc1 = Coordinates[leftImg].src;
   const imageSrc2 = Coordinates[rightImg].src;
   const [winAudio] = useState(new Audio(WinSound));
+  const audioRef = useRef(new Audio(NormMusic));
   winAudio.volume = soundVolume;
 
   const handleButtonClick = (index) => {
@@ -51,6 +53,51 @@ function SpotTheDiff({ soundVolume }) {
     }
   }, [clickedButtons]);
 
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    const playAudio = () => {
+      if (musicVolume !== "0") {
+        audio.loop = true;
+
+        const playPromise = audio.play();
+
+        playPromise
+          .then(() => {
+            audio.volume = musicVolume;
+          })
+          .catch((error) => {
+            console.error("Error playing audio:", error);
+          });
+      }
+    };
+
+    const pauseAudio = () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+
+    const handleCanPlay = () => {
+      playAudio();
+      audio.removeEventListener("canplay", handleCanPlay);
+    };
+
+    audio.addEventListener("canplay", handleCanPlay);
+
+    if (musicVolume === "0") {
+      pauseAudio();
+    } else {
+      // If audio is already loaded, play it; otherwise, it will be played once the canplay event is triggered
+      if (audio.readyState >= 2) {
+        playAudio();
+      }
+    }
+
+    return () => {
+      pauseAudio();
+      audio.removeEventListener("canplay", handleCanPlay);
+    };
+  }, [musicVolume]);
   return (
     <div onClick={clicker}>
       <div className="picture-frame">

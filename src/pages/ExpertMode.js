@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ExpertGrid from "../components/expertGrid";
 import "../styles/expertMode.css";
 import WinSound from "../media/sounds/win.mp3";
-
+import ExpMusic from "../media/sounds/ExpertMusic.mp3";
 import Coordinates from "../components/coordinates";
-function ExpertMode({ soundVolume }) {
+function ExpertMode({ soundVolume, musicVolume }) {
   const [starting, setStarting] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [buttonStates, setButtonStates] = useState(Array(100).fill(false));
@@ -14,6 +14,7 @@ function ExpertMode({ soundVolume }) {
   const [gridVis, setGridVis] = useState(false);
   const [timer, setTimer] = useState(15);
   const [winAudio] = useState(new Audio(WinSound));
+  const audioRef = useRef(new Audio(ExpMusic));
   const imageSrc = Coordinates[image].src;
   winAudio.volume = soundVolume;
   const handleButtonClick = (index) => {
@@ -82,6 +83,51 @@ function ExpertMode({ soundVolume }) {
       }, 15000);
     }
   }, [timer, starting]);
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    const playAudio = () => {
+      if (musicVolume !== "0") {
+        audio.loop = true;
+
+        const playPromise = audio.play();
+
+        playPromise
+          .then(() => {
+            audio.volume = musicVolume;
+          })
+          .catch((error) => {
+            console.error("Error playing audio:", error);
+          });
+      }
+    };
+
+    const pauseAudio = () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+
+    const handleCanPlay = () => {
+      playAudio();
+      audio.removeEventListener("canplay", handleCanPlay);
+    };
+
+    audio.addEventListener("canplay", handleCanPlay);
+
+    if (musicVolume === "0") {
+      pauseAudio();
+    } else {
+      // If audio is already loaded, play it; otherwise, it will be played once the canplay event is triggered
+      if (audio.readyState >= 2) {
+        playAudio();
+      }
+    }
+
+    return () => {
+      pauseAudio();
+      audio.removeEventListener("canplay", handleCanPlay);
+    };
+  }, [musicVolume]);
 
   return (
     <div>
