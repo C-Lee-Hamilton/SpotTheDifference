@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Grid from "../components/grid";
 import Coordinates from "../components/coordinates";
 import "../styles/normalMode.css";
-function SpotTheDiff() {
+import WinSound from "../media/sounds/win.mp3";
+function SpotTheDiff({ soundVolume }) {
   const [buttonStates, setButtonStates] = useState(Array(100).fill(false));
   const [clickedButtons, setClickedButtons] = useState([]);
   const [winning, setWinning] = useState(false);
@@ -11,6 +12,8 @@ function SpotTheDiff() {
   const [click, setClick] = useState(true);
   const imageSrc1 = Coordinates[leftImg].src;
   const imageSrc2 = Coordinates[rightImg].src;
+  const [winAudio] = useState(new Audio(WinSound));
+  winAudio.volume = soundVolume;
 
   const handleButtonClick = (index) => {
     const newButtonStates = [...buttonStates];
@@ -44,6 +47,7 @@ function SpotTheDiff() {
       clickedButtons.every((btnIndex) => winningCombination.includes(btnIndex))
     ) {
       setWinning(true);
+      winAudio.play();
     }
   }, [clickedButtons]);
 

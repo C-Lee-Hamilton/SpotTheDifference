@@ -1,0 +1,50 @@
+.settingsBody {
+  background-color: black;
+  color: white;
+  width: 50%;
+  padding: 25px;
+  margin: auto; /* Center the element horizontally */
+  position: absolute; /* Position the element */
+  top: 50%; /* Move the element down by 50% of the parent's height */
+  left: 50%; /* Move the element right by 50% of the parent's width */
+  transform: translate(-50%, -50%);
+  box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
+}
+input[type="range"] {
+  position: relative;
+  top: 3px;
+}
+/* custom checkbox with basecode from w3schools */
+.container {
+  display: inline-block;
+  position: relative;
+  margin-right: 2vw; /* Adjust the margin based on viewport width */
+  padding-left: 3.5vw; /* Adjust the padding based on viewport width */
+  margin-bottom: 1.2vw; /* Adjust the margin based on viewport width */
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 2.5vw; /* Adjust the height based on viewport width */
+  width: 2.5vw; /* Adjust the width based on viewport width */
+  border-radius: 10%;
+  border: 0.2vw solid white;
+}
+
+.container input:checked ~ .checkmark {
+  border: 0.4vw solid black; /* Adjust the border thickness based on viewport width */
+  box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
+}

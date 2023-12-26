@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ExpertGrid from "../components/expertGrid";
 import "../styles/expertMode.css";
+import WinSound from "../media/sounds/win.mp3";
 
 import Coordinates from "../components/coordinates";
-function ExpertMode() {
+function ExpertMode({ soundVolume }) {
   const [starting, setStarting] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [buttonStates, setButtonStates] = useState(Array(100).fill(false));
@@ -12,9 +13,9 @@ function ExpertMode() {
   const [image, setImage] = useState(0);
   const [gridVis, setGridVis] = useState(false);
   const [timer, setTimer] = useState(15);
-
+  const [winAudio] = useState(new Audio(WinSound));
   const imageSrc = Coordinates[image].src;
-
+  winAudio.volume = soundVolume;
   const handleButtonClick = (index) => {
     const newButtonStates = [...buttonStates];
     newButtonStates[index] = !newButtonStates[index];
@@ -55,22 +56,14 @@ function ExpertMode() {
       clickedButtons.every((btnIndex) => winningCombination.includes(btnIndex))
     ) {
       setWinning(true);
+      winAudio.play();
     }
     if (image % 2 === 0) {
       setGridVis(false);
     } else {
       setGridVis(true);
     }
-  }, [clickedButtons, image]);
-  useEffect(() => {
-    if (isPlaying) {
-      const countdownInterval = setInterval(() => {
-        setTimer((prevTimer) => (prevTimer > 0 ? prevTimer - 1 : 0));
-      }, 1000);
-
-      return () => clearInterval(countdownInterval);
-    }
-  }, [isPlaying, timer]);
+  }, [clickedButtons, image, winAudio]);
 
   return (
     <div>
