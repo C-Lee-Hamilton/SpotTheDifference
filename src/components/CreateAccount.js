@@ -18,9 +18,11 @@ function CreateAccount({
           email: email,
           password: newPassword,
           username: newUsername,
+          score: 0,
         }
       );
       console.log(response.data.user);
+      console.log(response.data.user.score);
       response.data.user === undefined
         ? setRegisterSuccess("try again")
         : setRegisterSuccess("success");

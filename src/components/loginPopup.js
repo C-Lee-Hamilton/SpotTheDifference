@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CreateAccount from "./CreateAccount";
-function PopUp({ loginClickPopup, setGreeting }) {
+function PopUp({
+  loginClickPopup,
+  setGreeting,
+  setScore,
+  score,
+  setToken,
+  token,
+}) {
   const [register, setRegister] = useState(false);
   const [login, setLogin] = useState(true);
   const [email, setEmail] = useState("");
@@ -13,7 +20,9 @@ function PopUp({ loginClickPopup, setGreeting }) {
     setLogin(!login);
     setRegisterSuccess("");
   };
-
+  useEffect(() => {
+    console.log("Updated Token:", token);
+  }, [token]);
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:5000/Auth/login", {
@@ -24,6 +33,13 @@ function PopUp({ loginClickPopup, setGreeting }) {
       if (response.data.success) {
         console.log("Login successful");
         console.log(response.data.user.username);
+        console.log("JWT Token:", response.data.token);
+
+        localStorage.setItem("token", response.data.token);
+        setToken(response.data.token);
+        console.log(token);
+        setScore(response.data.user.score);
+        console.log("this is" + score);
         setGreeting("Welcome Back" + " " + response.data.user.username);
         loginClickPopup();
       } else {

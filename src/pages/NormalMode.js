@@ -4,7 +4,8 @@ import Coordinates from "../components/coordinates";
 import "../styles/normalMode.css";
 import WinSound from "../media/sounds/win.mp3";
 import NormMusic from "../media/sounds/NormalMusic.mp3";
-function SpotTheDiff({ soundVolume, musicVolume }) {
+import axios from "axios";
+function SpotTheDiff({ soundVolume, musicVolume, score, setScore, token }) {
   const [buttonStates, setButtonStates] = useState(Array(100).fill(false));
   const [clickedButtons, setClickedButtons] = useState([]);
   const [winning, setWinning] = useState(false);
@@ -40,7 +41,56 @@ function SpotTheDiff({ soundVolume, musicVolume }) {
     setLeftImg(leftImg + 2);
     setRightImg(rightImg + 2);
   };
+  // const addScore = async () => {
+  //   try {
+  //     const updatedScore = [score];
 
+  //     await axios.post(
+  //       "/Auth/add-score",
+  //       { score: updatedScore },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
+
+  //     localStorage.setItem("score", JSON.stringify(updatedScore)); //store to local
+  //   } catch (error) {
+  //     console.error("Error adding score:", error);
+  //   }
+  // };
+  const addScore = async (newScore) => {
+    try {
+      await axios.post(
+        "http://localhost:5000/Auth/add-score",
+        { score: newScore },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      localStorage.setItem("score", JSON.stringify(newScore)); //store to local
+    } catch (error) {
+      console.error("Error adding score:", error);
+    }
+  };
+
+  // useEffect(() => {
+  //   const winningCombination = Coordinates[leftImg].solution;
+
+  //   if (
+  //     clickedButtons.length === winningCombination.length &&
+  //     clickedButtons.every((btnIndex) => winningCombination.includes(btnIndex))
+  //   ) {
+  //     setWinning(true);
+  //     winAudio.play();
+  //     setScore(69);
+  //     addScore();
+  //   }
+  // }, [clickedButtons]);
   useEffect(() => {
     const winningCombination = Coordinates[leftImg].solution;
 
@@ -50,9 +100,11 @@ function SpotTheDiff({ soundVolume, musicVolume }) {
     ) {
       setWinning(true);
       winAudio.play();
+      const updatedScore = score + 1; // Update the score
+      setScore(updatedScore);
+      addScore(updatedScore);
     }
   }, [clickedButtons]);
-
   useEffect(() => {
     const audio = audioRef.current;
 

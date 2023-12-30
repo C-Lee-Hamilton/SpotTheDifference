@@ -2,6 +2,7 @@ import "./App.css";
 import SpotTheDiff from "./pages/NormalMode";
 import ExpertMode from "./pages/ExpertMode";
 import SettingsMode from "./pages/SettingsMode";
+import ScoreMode from "./pages/ScoreMode";
 import { useState, useEffect } from "react";
 import PopUp from "./components/loginPopup";
 import Backarrow from "./media/images/icons/backarrow.png";
@@ -20,6 +21,7 @@ function App() {
   const [toggleExp, setToggleExp] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(true);
   const [toggleSettings, setToggleSettings] = useState(false);
+  const [toggleScore, setToggleScore] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState("black");
   const [normAudioPlaying, setNormAudioPlaying] = useState(false);
   const [expAudioPlaying, setExpAudioPlaying] = useState(false);
@@ -28,6 +30,8 @@ function App() {
   const [muteButton, setMuteButton] = useState(Unmute);
   const [clickAudio] = useState(new Audio(ButtonNoise));
   const [clickMode] = useState(new Audio(ModeNoise));
+  const [score, setScore] = useState(0);
+  const [token, setToken] = useState("");
   const clickSound = () => {
     clickAudio.play();
     clickAudio.volume = soundVolume;
@@ -54,30 +58,32 @@ function App() {
     setLoginPopup(!loginPopup);
   };
   const chooseNormal = () => {
-    setToggleSettings(false);
     setToggleMenu(false);
     setToggleNormal(true);
-    // setNormAudioPlaying(true);
+
     clickModes();
   };
   const chooseExpert = () => {
-    setToggleSettings(false);
     setToggleMenu(false);
     setToggleExp(true);
-    setExpAudioPlaying(true);
+
     clickModes();
   };
   const chooseSettings = () => {
     setToggleMenu(false);
     setToggleSettings(true);
   };
+  const chooseScore = () => {
+    setToggleScore(true);
+
+    setToggleMenu(false);
+  };
   const backButton = () => {
     setToggleExp(false);
     setToggleNormal(false);
     setToggleSettings(false);
     setToggleMenu(true);
-    setNormAudioPlaying(false);
-    setExpAudioPlaying(false);
+    setToggleScore(false);
   };
   const selectMute = () => {
     if (muteButton === Mute) {
@@ -148,6 +154,7 @@ function App() {
               Settings
             </button>
             <button
+              onClick={chooseScore}
               className="mode-button-right"
               style={{ backgroundColor: "hotpink" }}
             >
@@ -164,6 +171,7 @@ function App() {
             {greeting !== "Login here to track progress" && (
               <h1 className="greeting">
                 {greeting}
+                {score}
                 <br />
                 <button onClick={handleLogout} className="logout-button">
                   Log Out
@@ -175,7 +183,13 @@ function App() {
         {toggleNormal && (
           <div>
             <h1 className="header">Spot The Difference</h1>
-            <SpotTheDiff soundVolume={soundVolume} musicVolume={musicVolume} />
+            <SpotTheDiff
+              setScore={setScore}
+              score={score}
+              token={token}
+              soundVolume={soundVolume}
+              musicVolume={musicVolume}
+            />
           </div>
         )}
         {toggleExp && (
@@ -198,9 +212,23 @@ function App() {
             />
           </div>
         )}
+        {toggleScore && (
+          <div>
+            <h1 className="header">Spot The Difference</h1>
+
+            <ScoreMode score={score} />
+          </div>
+        )}
       </div>
       {loginPopup && (
-        <PopUp loginClickPopup={loginClickPopup} setGreeting={setGreeting} />
+        <PopUp
+          setScore={setScore}
+          loginClickPopup={loginClickPopup}
+          setGreeting={setGreeting}
+          score={score}
+          setToken={setToken}
+          token={token}
+        />
       )}
     </div>
   );
