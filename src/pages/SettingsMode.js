@@ -31,8 +31,9 @@ function SettingsMode({
     <div className="settingsBody">
       {!credits && (
         <div>
-          <h1>Settings</h1>
-          Sound Effects&nbsp;
+          <h1 className="settings-h1">Settings</h1>
+          Sound Effects
+          <br />
           <input
             type="range"
             min="0"
@@ -43,7 +44,8 @@ function SettingsMode({
           />
           <br />
           <br />
-          Music&nbsp;
+          Music
+          <br />
           <input
             type="range"
             min="0"
@@ -56,12 +58,12 @@ function SettingsMode({
           <br />
           <ColorSelector setBackgroundColor={setBackgroundColor} />
           <br />
-          <button onClick={selectCredit}>MUSIC CREDITS</button>
+          <button onClick={selectCredit}>MUSIC AND ICONS CREDITS</button>
         </div>
       )}
       {credits && (
-        <div>
-          <h1>Music Credits</h1>
+        <div className="credits-page">
+          <h1>Music and Icons Credits</h1>
           <p>
             Expert Mode Music
             <br />
@@ -82,6 +84,10 @@ function SettingsMode({
             <br />
             <br />
             Sound effects provided by Pixabay
+            <br />
+            icons provided by Flaticon
+            <br />
+            UIcons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
           </p>
           <button onClick={selectCredit}>Go Back</button>
         </div>

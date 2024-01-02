@@ -1,27 +1,77 @@
 .scoreBody {
-  color: white;
-  background-color: grey;
+  color: black;
+  background-color: black;
+  font-family: metal;
+  letter-spacing: 4px;
+  border-radius: 15px;
+  text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
+
+  margin: 10%;
+  margin-top: 1%;
+  box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
 }
+
 .columnsContainer {
+  max-height: 500px;
   display: flex;
   justify-content: space-around; /* Adjust this property to control the space between columns */
 }
-
+.header-leader {
+  text-decoration-line: underline;
+  margin-bottom: 0px;
+}
+h2 {
+  text-decoration-line: underline;
+  color: white;
+  text-shadow: none;
+}
+h3 {
+  font-size: smaller;
+}
 .column {
   flex: 1;
   padding: 20px;
+  padding-top: 0px;
   border: 1px solid #ccc;
   margin: 10px;
   text-align: center;
+  border-radius: 10px;
+  box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
 }
 li {
   list-style-type: decimal;
+  margin-left: -20px;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: none;
+}
+.badges-header {
+  text-decoration-line: none;
+  font-size: larger;
+  margin-bottom: 5px;
 }
 .button-on {
+  color: white;
+  background-color: black;
+  width: 90%;
+  border-radius: 5px;
+  box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
+}
+.button-off {
+  box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
+  border-radius: 5px;
+  width: 90%;
   color: black;
   background-color: white;
 }
-.button-off {
-  color: white;
-  background-color: black;
+
+.badges {
+  box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
+  height: 50%;
+  background-image: linear-gradient(to right, blue, cyan, lime);
+  border-radius: 10px;
+}
+.badge {
+  height: 15%;
+  margin-top: 2px;
 }

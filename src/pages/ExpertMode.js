@@ -4,7 +4,14 @@ import "../styles/expertMode.css";
 import WinSound from "../media/sounds/win.mp3";
 import ExpMusic from "../media/sounds/ExpertMusic.mp3";
 import Coordinates from "../components/coordinates";
-function ExpertMode({ soundVolume, musicVolume }) {
+import axios from "axios";
+function ExpertMode({
+  soundVolume,
+  musicVolume,
+  highscore,
+  setHighscore,
+  token,
+}) {
   const [starting, setStarting] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [buttonStates, setButtonStates] = useState(Array(100).fill(false));
@@ -47,6 +54,23 @@ function ExpertMode({ soundVolume, musicVolume }) {
       setImage(image + 1);
     }, 15000);
   };
+  const addScore = async (newScore) => {
+    try {
+      await axios.post(
+        "http://localhost:5000/Auth/add-highscore",
+        { highscore: newScore },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      localStorage.setItem("highscore", JSON.stringify(newScore)); //store to local
+    } catch (error) {
+      console.error("Error adding score:", error);
+    }
+  };
 
   useEffect(() => {
     //Check For Win
@@ -58,6 +82,9 @@ function ExpertMode({ soundVolume, musicVolume }) {
     ) {
       setWinning(true);
       winAudio.play();
+      const updatedScore = highscore + 1; // Update the score
+      setHighscore(updatedScore);
+      addScore(updatedScore);
     }
     if (image % 2 === 0) {
       setGridVis(false);

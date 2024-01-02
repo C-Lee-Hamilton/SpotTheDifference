@@ -2,24 +2,32 @@
   background-color: black;
   color: white;
   width: 50%;
+  height: 50%;
+  max-width: 250px;
+
   padding: 25px;
+
+  font-family: metal;
+  letter-spacing: 3px;
   margin: auto; /* Center the element horizontally */
-  position: absolute; /* Position the element */
-  top: 50%; /* Move the element down by 50% of the parent's height */
-  left: 50%; /* Move the element right by 50% of the parent's width */
-  transform: translate(-50%, -50%);
+  position: relative; /* Position the element */
+  margin-top: 5%;
+  border-radius: 15px;
   box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
 }
 input[type="range"] {
   position: relative;
   top: 3px;
 }
+.settings-h1 {
+  margin-top: -5px;
+}
 /* custom checkbox with basecode from w3schools */
 .container {
   display: inline-block;
   position: relative;
-  margin-right: 2vw; /* Adjust the margin based on viewport width */
-  padding-left: 3.5vw; /* Adjust the padding based on viewport width */
+  margin-right: 10px; /* Adjust the margin based on viewport width */
+  padding-left: 15px; /* Adjust the padding based on viewport width */
   margin-bottom: 1.2vw; /* Adjust the margin based on viewport width */
   cursor: pointer;
   -webkit-user-select: none;
@@ -27,21 +35,29 @@ input[type="range"] {
   -ms-user-select: none;
   user-select: none;
 }
-
+.credits-page {
+  margin-top: -40px;
+}
 .container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
-
+button {
+  font-family: metal;
+  letter-spacing: 1.5px;
+}
 .checkmark {
   position: absolute;
   top: 0px;
   left: 0;
-  height: 2.5vw; /* Adjust the height based on viewport width */
-  width: 2.5vw; /* Adjust the width based on viewport width */
+
+  height: 15px; /* Adjust the height based on viewport width */
+  width: 15px;
+  max-width: 15px;
+  max-height: 15px; /* Adjust the width based on viewport width */
   border-radius: 10%;
-  border: 0.2vw solid white;
+  border: 1px solid white;
 }
 
 .container input:checked ~ .checkmark {

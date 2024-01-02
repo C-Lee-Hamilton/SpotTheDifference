@@ -5,18 +5,19 @@ import SettingsMode from "./pages/SettingsMode";
 import ScoreMode from "./pages/ScoreMode";
 import { useState, useEffect } from "react";
 import PopUp from "./components/loginPopup";
-import Backarrow from "./media/images/icons/backarrow.png";
-import Mute from "./media/images/icons/mute.png";
-import Unmute from "./media/images/icons/unmute.png";
+import Backarrow from "./media/images/icons/undo.png";
+import Mute from "./media/images/icons/volume.png";
+import Unmute from "./media/images/icons/volume-slash.png";
 import axios from "axios";
 import NormMusic from "./media/sounds/NormalMusic.mp3";
 import ExpMusic from "./media/sounds/ExpertMusic.mp3";
 import ButtonNoise from "./media/sounds/buttonClick.mp3";
 import ModeNoise from "./media/sounds/ModeStart.mp3";
+
 function App() {
   const [loginPopup, setLoginPopup] = useState(false);
   const [greeting, setGreeting] = useState("Login here to track progress");
-  const [loggedOut, setLoggedOut] = useState("");
+
   const [toggleNormal, setToggleNormal] = useState(false);
   const [toggleExp, setToggleExp] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(true);
@@ -31,6 +32,7 @@ function App() {
   const [clickAudio] = useState(new Audio(ButtonNoise));
   const [clickMode] = useState(new Audio(ModeNoise));
   const [score, setScore] = useState(0);
+  const [highscore, setHighscore] = useState(0);
   const [token, setToken] = useState("");
   const clickSound = () => {
     clickAudio.play();
@@ -48,7 +50,7 @@ function App() {
 
       // Update the greeting state or perform any other actions
       setGreeting("Login here to track progress");
-      setLoggedOut("Log Out Successful...");
+      // setLoggedOut("Log Out Successful...");
     } catch (error) {
       console.error("Error during logout:", error);
     }
@@ -111,32 +113,46 @@ function App() {
       className="App"
     >
       <div>
-        {!toggleMenu && (
-          <h1 className="back-button-h1">
+        <div className="tool-banner">
+          {!toggleMenu && (
+            <h1 className="back-button-h1">
+              <img
+                src={Backarrow}
+                className="back-button"
+                onClick={backButton}
+              ></img>
+            </h1>
+          )}
+          {greeting === "Login here to track progress" && (
+            <button onClick={loginClickPopup} className="login-button">
+              <br />
+              {greeting}
+            </button>
+          )}
+          {greeting !== "Login here to track progress" && (
+            <h1 className="greeting">{greeting}</h1>
+          )}
+          <h1 className="mute-button-h1">
             <img
-              src={Backarrow}
-              className="back-button"
-              onClick={backButton}
+              src={muteButton}
+              className="mute-button"
+              onClick={selectMute}
             ></img>
           </h1>
-        )}
-        <h1 className="mute-button-h1">
-          <img
-            src={muteButton}
-            className="mute-button"
-            onClick={selectMute}
-          ></img>
-        </h1>
+        </div>
+
         {toggleMenu && (
           <div className="main-menu">
             <h1 className="header">Spot The Difference</h1>
-            <h2>Select Mode</h2>
+
             <button
               className="mode-button-left"
               style={{ backgroundColor: "cyan" }}
               onClick={chooseNormal}
             >
               Normal
+              <br />
+              <h1 className="smallText">Mode</h1>
             </button>
             <button
               className="mode-button-right"
@@ -144,6 +160,8 @@ function App() {
               onClick={chooseExpert}
             >
               Expert
+              <br />
+              <h1 className="smallText">Mode</h1>
             </button>
             <br />
             <button
@@ -161,23 +179,6 @@ function App() {
               Highscores
             </button>
             <br />
-            {greeting === "Login here to track progress" && (
-              <button onClick={loginClickPopup} className="login-button">
-                {loggedOut}
-                <br />
-                {greeting}
-              </button>
-            )}
-            {greeting !== "Login here to track progress" && (
-              <h1 className="greeting">
-                {greeting}
-                {score}
-                <br />
-                <button onClick={handleLogout} className="logout-button">
-                  Log Out
-                </button>
-              </h1>
-            )}
           </div>
         )}
         {toggleNormal && (
@@ -196,7 +197,13 @@ function App() {
           <div>
             <h1 className="header">Spot The Difference</h1>
             <h1 className="expert-banner">EXPERT</h1>
-            <ExpertMode soundVolume={soundVolume} musicVolume={musicVolume} />
+            <ExpertMode
+              setHighscore={setHighscore}
+              highscore={highscore}
+              token={token}
+              soundVolume={soundVolume}
+              musicVolume={musicVolume}
+            />
           </div>
         )}
         {toggleSettings && (
@@ -216,19 +223,24 @@ function App() {
           <div>
             <h1 className="header">Spot The Difference</h1>
 
-            <ScoreMode score={score} />
+            <ScoreMode score={score} highscore={highscore} />
           </div>
         )}
       </div>
       {loginPopup && (
         <PopUp
           setScore={setScore}
+          setHighscore={setHighscore}
           loginClickPopup={loginClickPopup}
           setGreeting={setGreeting}
-          score={score}
           setToken={setToken}
           token={token}
         />
+      )}
+      {greeting !== "Login here to track progress" && (
+        <button onClick={handleLogout} className="logout-button">
+          Log Out
+        </button>
       )}
     </div>
   );

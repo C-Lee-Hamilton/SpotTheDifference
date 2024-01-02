@@ -5,7 +5,9 @@ function PopUp({
   loginClickPopup,
   setGreeting,
   setScore,
-  score,
+
+  setHighscore,
+
   setToken,
   token,
 }) {
@@ -39,7 +41,8 @@ function PopUp({
         setToken(response.data.token);
         console.log(token);
         setScore(response.data.user.score);
-        console.log("this is" + score);
+        setHighscore(response.data.user.highscore);
+
         setGreeting("Welcome Back" + " " + response.data.user.username);
         loginClickPopup();
       } else {

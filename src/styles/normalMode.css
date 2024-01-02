@@ -51,7 +51,7 @@
 .footer {
   font-size: 4vw;
   text-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
-  margin-top: 1vh;
+  margin-top: -0.75vh;
   margin-bottom: 1vh;
   font-family: monofett;
   cursor: default;

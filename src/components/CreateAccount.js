@@ -19,6 +19,7 @@ function CreateAccount({
           password: newPassword,
           username: newUsername,
           score: 0,
+          highscore: 0,
         }
       );
       console.log(response.data.user);

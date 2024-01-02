@@ -41,25 +41,7 @@ function SpotTheDiff({ soundVolume, musicVolume, score, setScore, token }) {
     setLeftImg(leftImg + 2);
     setRightImg(rightImg + 2);
   };
-  // const addScore = async () => {
-  //   try {
-  //     const updatedScore = [score];
 
-  //     await axios.post(
-  //       "/Auth/add-score",
-  //       { score: updatedScore },
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       }
-  //     );
-
-  //     localStorage.setItem("score", JSON.stringify(updatedScore)); //store to local
-  //   } catch (error) {
-  //     console.error("Error adding score:", error);
-  //   }
-  // };
   const addScore = async (newScore) => {
     try {
       await axios.post(
@@ -78,19 +60,6 @@ function SpotTheDiff({ soundVolume, musicVolume, score, setScore, token }) {
     }
   };
 
-  // useEffect(() => {
-  //   const winningCombination = Coordinates[leftImg].solution;
-
-  //   if (
-  //     clickedButtons.length === winningCombination.length &&
-  //     clickedButtons.every((btnIndex) => winningCombination.includes(btnIndex))
-  //   ) {
-  //     setWinning(true);
-  //     winAudio.play();
-  //     setScore(69);
-  //     addScore();
-  //   }
-  // }, [clickedButtons]);
   useEffect(() => {
     const winningCombination = Coordinates[leftImg].solution;
 

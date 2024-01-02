@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/scoreMode.css";
-
-function ScoreMode({ score }) {
+import badge from "../media/images/59.png";
+function ScoreMode({ score, highscore }) {
   const [ATExpTab, setATExpTab] = useState(false);
   const [ATNormTab, setATNormTab] = useState(true);
   const [normClass, setNormClass] = useState("button-on");
@@ -26,7 +26,7 @@ function ScoreMode({ score }) {
   };
   return (
     <div className="scoreBody">
-      <h1>Leaderboards</h1>
+      <h1 className="header-leader">Leaderboards</h1>
 
       <div className="columnsContainer">
         {/* All Time Column */}
@@ -43,12 +43,28 @@ function ScoreMode({ score }) {
               <ul>
                 <li>a</li>
                 <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
+                <li>a</li>
               </ul>
             </div>
           )}
           {ATExpTab && (
             <div className="ATExpScore">
               <ul>
+                <li>b</li>
+                <li>b</li>
+                <li>b</li>
+                <li>b</li>
+                <li>b</li>
+                <li>b</li>
+                <li>b</li>
+                <li>b</li>
                 <li>b</li>
                 <li>b</li>
               </ul>
@@ -59,14 +75,22 @@ function ScoreMode({ score }) {
         {/* Personal Column */}
         <div className="column">
           <h2>Personal</h2>
-          {score}
+
           <div>
             <h3>Normal Mode</h3>
-            score
+            {score}
           </div>
           <div>
             <h3>Expert Mode</h3>
-            score
+            {highscore}
+          </div>
+          <h3 className="badges-header">Badges</h3>
+          <div className="badges">
+            <img className="badge" src={badge} />
+            <img className="badge" src={badge} />
+            <img className="badge" src={badge} />
+            <img className="badge" src={badge} />
+            <img className="badge" src={badge} />
           </div>
         </div>
       </div>
