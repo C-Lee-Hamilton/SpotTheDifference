@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import PopupBadge from "../components/popupBadge";
 import ExpertGrid from "../components/expertGrid";
 import "../styles/expertMode.css";
 import WinSound from "../media/sounds/win.mp3";
@@ -164,7 +165,9 @@ function ExpertMode({
             <h4>Objectives:</h4>
             <h5>Memorize the first image before time runs out</h5>
             <h5>Find the differences in the second image</h5>
-            <h3>Click Start to Begin</h3>
+            <button className="exp-next-button" onClick={StartButton}>
+              Start
+            </button>
           </div>
         )}
         {starting && <img className="exp-img-blur" src={imageSrc} alt="" />}
@@ -184,15 +187,13 @@ function ExpertMode({
 
       <div className="timer-label">Time Remaining: {timer}</div>
 
-      {starting && (
-        <button className="exp-next-button" onClick={StartButton}>
-          Start
-        </button>
-      )}
       {winning && (
-        <button className="exp-next-button" onClick={NextButton}>
-          Next
-        </button>
+        <div className="exp-instructions">
+          <PopupBadge highscore={highscore} />
+          <button className="exp-next-button" onClick={NextButton}>
+            Next
+          </button>
+        </div>
       )}
     </div>
   );

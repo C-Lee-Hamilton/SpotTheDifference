@@ -61,6 +61,6 @@ button {
 }
 
 .container input:checked ~ .checkmark {
-  border: 0.4vw solid black; /* Adjust the border thickness based on viewport width */
+  border: 2px solid black; /* Adjust the border thickness based on viewport width */
   box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
 }

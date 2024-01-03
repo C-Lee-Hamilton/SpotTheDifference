@@ -27,11 +27,14 @@ h2 {
 }
 h3 {
   font-size: smaller;
+  margin-bottom: 5px;
+  margin-top: 15px;
 }
 .column {
   flex: 1;
   padding: 20px;
   padding-top: 0px;
+
   border: 1px solid #ccc;
   margin: 10px;
   text-align: center;
@@ -47,13 +50,16 @@ li {
 }
 .badges-header {
   text-decoration-line: none;
-  font-size: larger;
+  font-size: x-large;
   margin-bottom: 5px;
+  color: orangered;
+  margin-top: 10px;
 }
 .button-on {
   color: white;
   background-color: black;
   width: 90%;
+  cursor: pointer;
   border-radius: 5px;
   box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
 }
@@ -63,15 +69,50 @@ li {
   width: 90%;
   color: black;
   background-color: white;
+  cursor: pointer;
+}
+
+.personalScore {
+  margin-top: -15px;
+  margin-bottom: 0px;
+}
+.button-on2 {
+  margin-top: 7px;
+  font-size: small;
+  color: white;
+  background-color: black;
+  width: 55px;
+  padding: 0px;
+
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
+}
+.button-off2 {
+  font-size: small;
+  box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
+  border-radius: 5px;
+  margin-top: 7px;
+  width: 55px;
+  color: black;
+  background-color: white;
+  cursor: pointer;
 }
 
 .badges {
   box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
   height: 50%;
+
   background-image: linear-gradient(to right, blue, cyan, lime);
   border-radius: 10px;
 }
 .badge {
-  height: 15%;
+  box-shadow: none;
+  width: 5.5vw;
   margin-top: 2px;
+}
+@media only screen and (min-width: 700px) {
+  .badge {
+    width: 4vw;
+  }
 }

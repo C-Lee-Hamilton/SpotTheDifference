@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "../styles/scoreMode.css";
-import badge from "../media/images/59.png";
+import BadgeDisplay from "../components/userBadges";
 function ScoreMode({ score, highscore }) {
   const [ATExpTab, setATExpTab] = useState(false);
   const [ATNormTab, setATNormTab] = useState(true);
-  const [normClass, setNormClass] = useState("button-on");
-  const [expClass, setExpClass] = useState("button-off");
+  const [ATExpTab2, setATExpTab2] = useState(false);
+  const [ATNormTab2, setATNormTab2] = useState(true);
+
+  const normButton2 = () => {
+    if (ATExpTab2) {
+      setATNormTab2(true);
+      setATExpTab2(false);
+    } else {
+    }
+  };
+  const expButton2 = () => {
+    if (ATNormTab2) {
+      setATNormTab2(false);
+      setATExpTab2(true);
+    } else {
+    }
+  };
   const normButton = () => {
     if (ATExpTab) {
       setATNormTab(true);
       setATExpTab(false);
-      setNormClass("button-off");
-      setExpClass("button-on");
     } else {
     }
   };
@@ -19,24 +32,28 @@ function ScoreMode({ score, highscore }) {
     if (ATNormTab) {
       setATNormTab(false);
       setATExpTab(true);
-      setNormClass("button-on");
-      setExpClass("button-off");
     } else {
     }
   };
   return (
     <div className="scoreBody">
-      <h1 className="header-leader">Leaderboards</h1>
+      <h1 className="header-leader">High Scores</h1>
 
       <div className="columnsContainer">
         {/* All Time Column */}
         <div className="column">
-          <h2>All Time</h2>
-          <button className={normClass} onClick={normButton}>
-            Normal Mode
+          <h2>Leaderboards</h2>
+          <button
+            className={ATNormTab ? "button-off" : "button-on"}
+            onClick={normButton}
+          >
+            Normal
           </button>
-          <button className={expClass} onClick={expButton}>
-            Expert Mode
+          <button
+            className={ATExpTab ? "button-off" : "button-on"}
+            onClick={expButton}
+          >
+            Expert
           </button>
           {ATNormTab && (
             <div className="ATNormScore">
@@ -76,22 +93,38 @@ function ScoreMode({ score, highscore }) {
         <div className="column">
           <h2>Personal</h2>
 
-          <div>
+          <div className="personalScore">
             <h3>Normal Mode</h3>
             {score}
           </div>
-          <div>
+          <div className="personalScore">
             <h3>Expert Mode</h3>
             {highscore}
           </div>
           <h3 className="badges-header">Badges</h3>
+
           <div className="badges">
-            <img className="badge" src={badge} />
-            <img className="badge" src={badge} />
-            <img className="badge" src={badge} />
-            <img className="badge" src={badge} />
-            <img className="badge" src={badge} />
+            <BadgeDisplay
+              ATNormTab2={ATNormTab2}
+              ATExpTab2={ATExpTab2}
+              highscore={highscore}
+              score={score}
+            />
           </div>
+          <button
+            className={ATNormTab2 ? "button-off2" : "button-on2"}
+            onClick={normButton2}
+            style={{ marginRight: "2px" }}
+          >
+            Normal
+          </button>
+          <button
+            className={ATExpTab2 ? "button-off2" : "button-on2"}
+            onClick={expButton2}
+            style={{ marginLeft: "2px" }}
+          >
+            Expert
+          </button>
         </div>
       </div>
     </div>

@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, createContext } from "react";
 import Grid from "../components/grid";
 import Coordinates from "../components/coordinates";
 import "../styles/normalMode.css";
 import WinSound from "../media/sounds/win.mp3";
 import NormMusic from "../media/sounds/NormalMusic.mp3";
 import axios from "axios";
+import PopupBadge from "../components/popupBadge";
+
 function SpotTheDiff({ soundVolume, musicVolume, score, setScore, token }) {
   const [buttonStates, setButtonStates] = useState(Array(100).fill(false));
   const [clickedButtons, setClickedButtons] = useState([]);
@@ -142,9 +144,12 @@ function SpotTheDiff({ soundVolume, musicVolume, score, setScore, token }) {
         </div>
       </div>
       {winning && (
-        <button onClick={NextButton} className="next-button">
-          NEXT
-        </button>
+        <>
+          <PopupBadge score={score} />
+          <button onClick={NextButton} className="next-button">
+            NEXT
+          </button>
+        </>
       )}
       {click && <h1 className="footer">Click Anywhere to begin</h1>}
     </div>

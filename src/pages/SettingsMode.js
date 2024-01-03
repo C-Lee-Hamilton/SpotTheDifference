@@ -8,14 +8,18 @@ function SettingsMode({
   setMusicVolume,
   soundVolume,
   musicVolume,
+  rangeValue1,
+  rangeValue2,
+  setRangeValue1,
+  setRangeValue2,
 }) {
   const [credits, setCredits] = useState(false);
 
   const selectCredit = () => {
     setCredits(!credits);
   };
-  const [rangeValue1, setRangeValue1] = useState(soundVolume);
-  const [rangeValue2, setRangeValue2] = useState(musicVolume);
+  // const [rangeValue1, setRangeValue1] = useState(soundVolume);
+  // const [rangeValue2, setRangeValue2] = useState(musicVolume);
   const handleRangeChange = (event) => {
     const newValue = event.target.value;
     setRangeValue1(newValue);

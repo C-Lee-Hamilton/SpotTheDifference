@@ -1,0 +1,77 @@
+@keyframes bounceAnimation {
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-10px);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+  /* 50% {
+    transform: translateY(-10px);
+  }
+  70% {
+    transform: translateY(-10px);
+  }
+  90% {
+    transform: translateY(-10px);
+  } */
+}
+
+.letter-0,
+.letter-1,
+.letter-2,
+.letter-3,
+.letter-4,
+.letter-5,
+.letter-6,
+.letter-7,
+.letter-8,
+.letter-9 {
+  font-family: metal;
+  color: black;
+  text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
+  animation: bounceAnimation 4s forwards;
+  display: inline-block; /* Ensures each letter takes up its own space */
+}
+
+.letter-1 {
+  animation-delay: 0.1s;
+}
+
+.letter-2 {
+  animation-delay: 0.2s;
+}
+
+.letter-3 {
+  animation-delay: 0.3s;
+}
+
+.letter-4 {
+  animation-delay: 0.4s;
+}
+
+.letter-5 {
+  animation-delay: 0.5s;
+}
+
+.letter-6 {
+  animation-delay: 0.6s;
+}
+.letter-7 {
+  animation-delay: 0.7s;
+}
+
+.letter-8 {
+  animation-delay: 0.8s;
+}
+
+.letter-9 {
+  animation-delay: 0.9s;
+}

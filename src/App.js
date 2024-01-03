@@ -3,23 +3,45 @@ import SpotTheDiff from "./pages/NormalMode";
 import ExpertMode from "./pages/ExpertMode";
 import SettingsMode from "./pages/SettingsMode";
 import ScoreMode from "./pages/ScoreMode";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
+
 import PopUp from "./components/loginPopup";
 import Backarrow from "./media/images/icons/undo.png";
-import Mute from "./media/images/icons/volume.png";
-import Unmute from "./media/images/icons/volume-slash.png";
+import Mute from "./media/images/icons/volume-slash.png";
+import Unmute from "./media/images/icons/volume.png";
 import axios from "axios";
 import NormMusic from "./media/sounds/NormalMusic.mp3";
 import ExpMusic from "./media/sounds/ExpertMusic.mp3";
 import ButtonNoise from "./media/sounds/buttonClick.mp3";
 import ModeNoise from "./media/sounds/ModeStart.mp3";
+const AppContext = createContext();
 
-function App() {
+// App component, providing state values through the context
+const App = () => {
+  const [toggleNormal, setToggleNormal] = useState(false);
+  const [toggleExp, setToggleExp] = useState(false);
+
+  return (
+    <AppContext.Provider
+      value={{
+        toggleNormal,
+        setToggleNormal,
+        toggleExp,
+        setToggleExp,
+      }}
+    >
+      {/* Your app content goes here */}
+      <ChildComponent />
+    </AppContext.Provider>
+  );
+};
+
+const ChildComponent = () => {
+  const { toggleNormal, setToggleNormal, setToggleExp, toggleExp } =
+    useContext(AppContext);
   const [loginPopup, setLoginPopup] = useState(false);
   const [greeting, setGreeting] = useState("Login here to track progress");
 
-  const [toggleNormal, setToggleNormal] = useState(false);
-  const [toggleExp, setToggleExp] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(true);
   const [toggleSettings, setToggleSettings] = useState(false);
   const [toggleScore, setToggleScore] = useState(false);
@@ -33,6 +55,10 @@ function App() {
   const [clickMode] = useState(new Audio(ModeNoise));
   const [score, setScore] = useState(0);
   const [highscore, setHighscore] = useState(0);
+
+  const [rangeValue1, setRangeValue1] = useState(soundVolume);
+  const [rangeValue2, setRangeValue2] = useState(musicVolume);
+
   const [token, setToken] = useState("");
   const clickSound = () => {
     clickAudio.play();
@@ -91,6 +117,8 @@ function App() {
     if (muteButton === Mute) {
       setSoundVolume(0.5);
       setMusicVolume(0.5);
+      setRangeValue1(0.5);
+      setRangeValue2(0.5);
       setMuteButton(Unmute);
       if (toggleNormal == true) {
         setNormAudioPlaying(true);
@@ -99,6 +127,8 @@ function App() {
       }
     } else {
       setMuteButton(Mute);
+      setRangeValue1(0);
+      setRangeValue2(0);
       setSoundVolume(0);
       setMusicVolume(0);
       setNormAudioPlaying(false);
@@ -151,8 +181,6 @@ function App() {
               onClick={chooseNormal}
             >
               Normal
-              <br />
-              <h1 className="smallText">Mode</h1>
             </button>
             <button
               className="mode-button-right"
@@ -160,8 +188,6 @@ function App() {
               onClick={chooseExpert}
             >
               Expert
-              <br />
-              <h1 className="smallText">Mode</h1>
             </button>
             <br />
             <button
@@ -216,6 +242,10 @@ function App() {
               setMusicVolume={setMusicVolume}
               soundVolume={soundVolume}
               musicVolume={musicVolume}
+              rangeValue1={rangeValue1}
+              setRangeValue1={setRangeValue1}
+              rangeValue2={rangeValue2}
+              setRangeValue2={setRangeValue2}
             />
           </div>
         )}
@@ -237,13 +267,17 @@ function App() {
           token={token}
         />
       )}
-      {greeting !== "Login here to track progress" && (
-        <button onClick={handleLogout} className="logout-button">
-          Log Out
-        </button>
+      {toggleMenu && (
+        <div>
+          {greeting !== "Login here to track progress" && (
+            <button onClick={handleLogout} className="logout-button">
+              Log Out
+            </button>
+          )}
+        </div>
       )}
     </div>
   );
-}
+};
 
-export default App;
+export { App, AppContext };
