@@ -76,6 +76,7 @@ const ChildComponent = () => {
 
       // Update the greeting state or perform any other actions
       setGreeting("Login here to track progress");
+      setToken("");
       // setLoggedOut("Log Out Successful...");
     } catch (error) {
       console.error("Error during logout:", error);
@@ -246,6 +247,8 @@ const ChildComponent = () => {
               setRangeValue1={setRangeValue1}
               rangeValue2={rangeValue2}
               setRangeValue2={setRangeValue2}
+              token={token}
+              handleLogout={handleLogout}
             />
           </div>
         )}
@@ -267,7 +270,7 @@ const ChildComponent = () => {
           token={token}
         />
       )}
-      {toggleMenu && (
+      {/* {toggleMenu && (
         <div>
           {greeting !== "Login here to track progress" && (
             <button onClick={handleLogout} className="logout-button">
@@ -275,9 +278,16 @@ const ChildComponent = () => {
             </button>
           )}
         </div>
-      )}
+      )} */}
     </div>
   );
 };
 
 export { App, AppContext };
+
+//set up All Time High Scores in the backend
+//access and modify All Time High Scores in the front end
+
+//twemoji credits need to be done at some point, doc is in your png icon folder
+//brain storm any additional features
+//set up coordinates and run tests

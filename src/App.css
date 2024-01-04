@@ -184,8 +184,8 @@ body {
   text-shadow: -1px -1px black, 1px 1px black, -1px 1px black, 1px -1px black;
 }
 .login-popup {
-  position: fixed;
-  top: 30%;
+  position: relative;
+  top: -30%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;

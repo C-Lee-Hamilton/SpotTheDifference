@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/settingsMode.css";
 import ColorSelector from "../components/colorSelector";
+import PasswordChange from "../components/pwChange";
 
 function SettingsMode({
   setBackgroundColor,
@@ -12,14 +13,19 @@ function SettingsMode({
   rangeValue2,
   setRangeValue1,
   setRangeValue2,
+  token,
+  handleLogout,
 }) {
   const [credits, setCredits] = useState(false);
+  const [changer, setChanger] = useState(false);
 
   const selectCredit = () => {
     setCredits(!credits);
   };
-  // const [rangeValue1, setRangeValue1] = useState(soundVolume);
-  // const [rangeValue2, setRangeValue2] = useState(musicVolume);
+  const selectChange = () => {
+    setChanger(!changer);
+  };
+
   const handleRangeChange = (event) => {
     const newValue = event.target.value;
     setRangeValue1(newValue);
@@ -47,7 +53,6 @@ function SettingsMode({
             onChange={handleRangeChange}
           />
           <br />
-          <br />
           Music
           <br />
           <input
@@ -59,10 +64,17 @@ function SettingsMode({
             onChange={handleRangeChange2}
           />
           <br />
-          <br />
           <ColorSelector setBackgroundColor={setBackgroundColor} />
           <br />
           <button onClick={selectCredit}>MUSIC AND ICONS CREDITS</button>
+          <br />
+          {token !== "" && (
+            <div>
+              <button onClick={selectChange}>Change Password</button>
+              <br />
+              <button onClick={handleLogout}>Log Out</button>
+            </div>
+          )}
         </div>
       )}
       {credits && (
@@ -96,6 +108,7 @@ function SettingsMode({
           <button onClick={selectCredit}>Go Back</button>
         </div>
       )}
+      {changer && <PasswordChange token={token} selectChange={selectChange} />}
     </div>
   );
 }

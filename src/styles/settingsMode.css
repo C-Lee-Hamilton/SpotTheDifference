@@ -18,9 +18,11 @@
 input[type="range"] {
   position: relative;
   top: 3px;
+  margin-bottom: 20px;
 }
 .settings-h1 {
   margin-top: -5px;
+  margin-bottom: 15px;
 }
 /* custom checkbox with basecode from w3schools */
 .container {
@@ -63,4 +65,47 @@ button {
 .container input:checked ~ .checkmark {
   border: 2px solid black; /* Adjust the border thickness based on viewport width */
   box-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
+}
+
+/* password change */
+
+.pwChange-popup {
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  background-color: grey;
+  border: 5px solid rgb(78, 78, 78);
+  width: 180px;
+  height: 220px;
+  padding: 10px;
+  z-index: 5;
+  border-radius: 5px;
+  text-align: center;
+  font-size: large;
+  font-family: metal;
+  margin-top: -150px;
+  margin-bottom: -100px;
+}
+.pwChange-inputs {
+  margin-top: 0px;
+  margin-bottom: -50px;
+  width: 170px;
+  color: gray;
+  border: 5px solid gray;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.pwChange-popup-button {
+  margin-top: 0px;
+  width: 180px;
+  border: 5px solid lightgray;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  cursor: pointer;
 }
