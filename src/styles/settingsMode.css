@@ -36,13 +36,13 @@ input[type="range"] {
   top: 10px;
   margin-top: -10px;
 
-  margin-bottom: 15px;
+  margin-bottom: 35px;
   left: 14%;
 }
-.reset {
-  letter-spacing: 5px;
-  margin-top: 0px;
-  margin-bottom: 5px;
+
+button {
+  width: 200px;
+  margin: 3px;
 }
 /* custom checkbox with basecode from w3schools */
 .container {

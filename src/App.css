@@ -27,7 +27,7 @@ body {
   font-size: 6vw;
   text-shadow: -2px -2px cyan, 2px 2px lime, -2px 2px hotpink, 2px -2px orange;
   margin-top: 1vh;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 
   font-family: monofett;
   cursor: default;
@@ -170,13 +170,14 @@ body {
 /* Login */
 .login-button {
   background-color: rgba(0, 0, 0, 0);
+  width: 300px;
   color: black;
   cursor: pointer;
   font-family: metal;
   border: none;
   font-size: 2.5vh;
   letter-spacing: 1px;
-  margin-bottom: 7px;
+  margin-bottom: 12px;
   font-weight: bold;
   text-shadow: -1px -1px cyan, 1px 1px lime, -1px 1px hotpink, 1px -1px orange;
 }

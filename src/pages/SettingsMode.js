@@ -90,9 +90,7 @@ function SettingsMode({
             className="color-picker"
             width={180}
           />
-          <button className="reset" onClick={resetButton}>
-            Reset All
-          </button>
+          <button onClick={resetButton}>Reset All</button>
           <button onClick={selectCredit}>MUSIC AND ICONS CREDITS</button>
           <br />
           {token !== "" && (

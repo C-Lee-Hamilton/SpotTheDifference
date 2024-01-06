@@ -6,6 +6,35 @@ function ScoreMode({ score, highscore }) {
   const [ATNormTab, setATNormTab] = useState(true);
   const [ATExpTab2, setATExpTab2] = useState(false);
   const [ATNormTab2, setATNormTab2] = useState(true);
+  const [highscores, setHighscores] = useState([]);
+  const [scores, setScores] = useState([]);
+
+  useEffect(() => {
+    const fetchHighscores = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/Auth/highscores");
+        const data = await response.json();
+        setHighscores(data);
+      } catch (error) {
+        console.error("Error fetching highscores:", error);
+      }
+    };
+
+    fetchHighscores();
+  }, []);
+  useEffect(() => {
+    const fetchNormHighscores = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/Auth/scores");
+        const data = await response.json();
+        setScores(data);
+      } catch (error) {
+        console.error("Error fetching highscores:", error);
+      }
+    };
+
+    fetchNormHighscores();
+  }, []);
 
   const normButton2 = () => {
     if (ATExpTab2) {
@@ -58,32 +87,22 @@ function ScoreMode({ score, highscore }) {
           {ATNormTab && (
             <div className="ATNormScore">
               <ul>
-                <li>a</li>
-                <li>a</li>
-                <li>a</li>
-                <li>a</li>
-                <li>a</li>
-                <li>a</li>
-                <li>a</li>
-                <li>a</li>
-                <li>a</li>
-                <li>a</li>
+                {scores.map((score) => (
+                  <li key={score.userId}>
+                    {score.username}: {score.score}
+                  </li>
+                ))}
               </ul>
             </div>
           )}
           {ATExpTab && (
             <div className="ATExpScore">
               <ul>
-                <li>b</li>
-                <li>b</li>
-                <li>b</li>
-                <li>b</li>
-                <li>b</li>
-                <li>b</li>
-                <li>b</li>
-                <li>b</li>
-                <li>b</li>
-                <li>b</li>
+                {highscores.map((highscore) => (
+                  <li key={highscore.userId}>
+                    {highscore.username}: {highscore.highscore}
+                  </li>
+                ))}
               </ul>
             </div>
           )}
