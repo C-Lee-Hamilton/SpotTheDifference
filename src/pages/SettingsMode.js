@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/settingsMode.css";
-import ColorSelector from "../components/colorSelector";
 import PasswordChange from "../components/pwChange";
+import { HuePicker } from "react-color";
 
 function SettingsMode({
   setBackgroundColor,
+  backgroundColor,
   setSoundVolume,
   setMusicVolume,
   soundVolume,
@@ -15,10 +16,14 @@ function SettingsMode({
   setRangeValue2,
   token,
   handleLogout,
+  bright,
+  setBright,
 }) {
   const [credits, setCredits] = useState(false);
   const [changer, setChanger] = useState(false);
-
+  const handleBrightnessChange = (event) => {
+    setBright(parseFloat(event.target.value));
+  };
   const selectCredit = () => {
     setCredits(!credits);
   };
@@ -37,13 +42,21 @@ function SettingsMode({
     setMusicVolume(newValue);
   };
 
+  const resetButton = () => {
+    setRangeValue1(0.5);
+    setRangeValue2(0.5);
+    setSoundVolume(0.5);
+    setMusicVolume(0.5);
+    setBackgroundColor("black");
+    setBright(1);
+  };
+
   return (
     <div className="settingsBody">
       {!credits && (
         <div>
           <h1 className="settings-h1">Settings</h1>
-          Sound Effects
-          <br />
+          <h2 className="settings-h2">Sound Effects</h2>
           <input
             type="range"
             min="0"
@@ -52,9 +65,7 @@ function SettingsMode({
             value={rangeValue1}
             onChange={handleRangeChange}
           />
-          <br />
-          Music
-          <br />
+          <h2 className="settings-h2">Music</h2>
           <input
             type="range"
             min="0"
@@ -63,9 +74,25 @@ function SettingsMode({
             value={rangeValue2}
             onChange={handleRangeChange2}
           />
-          <br />
-          <ColorSelector setBackgroundColor={setBackgroundColor} />
-          <br />
+          <h2 className="settings-h2">Brightness</h2>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step=".01"
+            value={bright}
+            onChange={handleBrightnessChange}
+          />
+          <h2 className="settings-h2">Background Color</h2>
+          <HuePicker
+            color={backgroundColor}
+            onChange={(color) => setBackgroundColor(color.hex)}
+            className="color-picker"
+            width={180}
+          />
+          <button className="reset" onClick={resetButton}>
+            Reset All
+          </button>
           <button onClick={selectCredit}>MUSIC AND ICONS CREDITS</button>
           <br />
           {token !== "" && (

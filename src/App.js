@@ -46,6 +46,7 @@ const ChildComponent = () => {
   const [toggleSettings, setToggleSettings] = useState(false);
   const [toggleScore, setToggleScore] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState("black");
+  const [bright, setBright] = useState(1);
   const [normAudioPlaying, setNormAudioPlaying] = useState(false);
   const [expAudioPlaying, setExpAudioPlaying] = useState(false);
   const [musicVolume, setMusicVolume] = useState(0.5);
@@ -140,7 +141,10 @@ const ChildComponent = () => {
   return (
     <div
       onClick={clickSound}
-      style={{ backgroundColor: backgroundColor }}
+      style={{
+        backgroundColor: backgroundColor,
+        filter: `brightness(${bright})`,
+      }}
       className="App"
     >
       <div>
@@ -239,6 +243,7 @@ const ChildComponent = () => {
 
             <SettingsMode
               setBackgroundColor={setBackgroundColor}
+              backgroundColor={backgroundColor}
               setSoundVolume={setSoundVolume}
               setMusicVolume={setMusicVolume}
               soundVolume={soundVolume}
@@ -249,6 +254,8 @@ const ChildComponent = () => {
               setRangeValue2={setRangeValue2}
               token={token}
               handleLogout={handleLogout}
+              bright={bright}
+              setBright={setBright}
             />
           </div>
         )}

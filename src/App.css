@@ -13,6 +13,7 @@ body {
 .App {
   text-align: center;
   background-color: black;
+
   margin: -15px;
   padding: 0;
   height: 120vh;
@@ -101,7 +102,8 @@ body {
 .back-button {
   position: relative;
   bottom: 0px;
-  left: 7px;
+  top: 15px;
+  left: 20px;
   /* background-color: rgba(0, 0, 0, 0); */
   background-color: black;
   border-radius: 50%;
@@ -116,9 +118,9 @@ body {
   max-height: 20px;
   cursor: pointer;
   position: relative;
-  right: 5px;
+  right: 20px;
   margin-bottom: 6px;
-
+  top: 15px;
   /* bottom: -5px; */
 }
 
