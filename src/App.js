@@ -292,9 +292,7 @@ const ChildComponent = () => {
 
 export { App, AppContext };
 
-//set up All Time High Scores in the backend
-//access and modify All Time High Scores in the front end
-
 //twemoji credits need to be done at some point, doc is in your png icon folder
-//brain storm any additional features
+//final css
 //set up coordinates and run tests
+//refactoring

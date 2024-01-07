@@ -77,8 +77,8 @@ function SettingsMode({
           <h2 className="settings-h2">Brightness</h2>
           <input
             type="range"
-            min="0"
-            max="1"
+            min=".5"
+            max="1.5"
             step=".01"
             value={bright}
             onChange={handleBrightnessChange}
